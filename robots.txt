@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Specifically allow AI crawlers to improve AIO/GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://setuops.xyz/sitemap.xml

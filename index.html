@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SETU Ops | Minimalist Technical Bridge AI Agency</title>
+<meta name="description" content="SETU Ops is Bangladesh's premier AI automation agency. We specialize in building technical bridges (SETU) that transform manual business workflows into intelligent, automated scale.">
+<meta name="keywords" content="AI Automation Agency, Bangladesh AI, Business Process Automation, Workflow Optimization, AI Integration, Dhaka Tech, Intelligent Scaling, SETU Ops, Generative AI for Business">
+<link rel="canonical" href="https://setuops.xyz">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="SETU Ops | Minimalist Technical Bridge AI Agency">
+<meta property="og:description" content="Bridging the gap between manual work and AI scale. We build the technical bridges that transform repetitive workflows into intelligent, automated systems.">
+<meta property="og:image" content="https://setuops.xyz/og-image.jpg">
+<meta property="og:url" content="https://setuops.xyz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SETU Ops | AI Automation Agency">
+<meta name="twitter:description" content="Bridging AI and Operations for modern enterprises in Bangladesh.">
+
+<!-- JSON-LD Structured Data for AI & Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "SETU Ops",
+  "alternateName": "SETU Ops AI Automation Agency",
+  "url": "https://setuops.xyz",
+  "logo": "https://setuops.xyz/logo.png",
+  "image": "https://setuops.xyz/og-image.jpg",
+  "description": "Bangladesh's leading AI automation agency specializing in bridging business operations with intelligent automated workflows.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressCountry": "BD"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "23.8103",
+    "longitude": "90.4125"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "hello@setuops.xyz",
+    "url": "https://setuops.xyz"
+  },
+  "sameAs": [
+    "https://facebook.com/setuBangladesh/",
+    "https://x.com/SetuBangladesh",
+    "https://www.linkedin.com/company/107139047"
+  ],
+  "serviceType": [
+    "Business Process Automation",
+    "AI Strategy Consulting",
+    "CRM Automation",
+    "Inventory & ERP Sync"
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#0da6f2",
+                    "emerald-accent": "#10b981",
+                    "neon-highlight": "#34d399",
+                    "background-light": "#f5f7f8",
+                    "background-dark": "#0a1017",
+                    "navy-900": "#0f172a",
+                    "navy-800": "#1e293b",
+                },
+                fontFamily: {
+                    "display": ["Space Grotesk", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style type="text/tailwindcss">
+    .glass-nav {
+        background: rgba(10, 16, 23, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .bento-card {
+        background: rgba(30, 41, 59, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        transition: all 0.3s ease;
+    }
+    .bento-card:hover {
+        border-color: rgba(13, 166, 242, 0.3);
+        transform: translateY(-2px);
+        background: rgba(30, 41, 59, 0.3);
+    }
+    .hero-gradient {
+        background: radial-gradient(circle at center, rgba(13, 166, 242, 0.12) 0%, transparent 70%);
+    }
+    body {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    .circuit-bg {
+        background-image: radial-gradient(circle at 2px 2px, rgba(13, 166, 242, 0.1) 1px, transparent 0);
+        background-size: 24px 24px;
+    }
+    .blueprint-grid {
+        background-image: linear-gradient(rgba(13, 166, 242, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(13, 166, 242, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+    .circuit-trace {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: trace 5s linear infinite;
+    }
+    @keyframes trace {
+        to { stroke-dashoffset: 0; }
+    }
+    /* Scroll reveal */
+    .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Mobile menu */
+    #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+    }
+    #mobile-menu.open {
+        max-height: 400px;
+    }
+    /* Service card */
+    .service-card {
+        background: rgba(30, 41, 59, 0.2);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.3s ease;
+    }
+    .service-card:hover {
+        border-color: rgba(13, 166, 242, 0.4);
+        background: rgba(13, 166, 242, 0.05);
+        transform: translateY(-3px);
+    }
+    /* Process step connector */
+    .step-line::after {
+        content: '';
+        position: absolute;
+        top: 24px;
+        left: calc(100% + 8px);
+        width: calc(100% - 16px);
+        height: 1px;
+        background: linear-gradient(90deg, rgba(13,166,242,0.4), rgba(52,211,153,0.2));
+        border-top: 1px dashed rgba(13,166,242,0.3);
+    }
+    /* Logo white bg */
+    .logo-wrap {
+        background: white;
+        border-radius: 10px;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-100 selection:bg-primary/30">
+
+<!-- Chat Popup Button -->
+<a class="fixed bottom-8 right-8 z-50 flex items-center justify-center size-14 bg-emerald-accent text-navy-900 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-110 transition-transform" href="#" id="chat-btn">
+    <span class="material-symbols-outlined text-3xl">chat</span>
+</a>
+
+<!-- Chat Modal -->
+<div id="chat-modal" class="fixed inset-0 z-[100] flex items-end justify-end p-8 pointer-events-none">
+    <div id="chat-modal-box" class="w-full max-w-sm bg-[#0f172a] border border-primary/20 rounded-2xl shadow-2xl shadow-primary/10 overflow-hidden pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300" style="display:none;">
+        <div class="flex items-center justify-between px-5 py-4 border-b border-white/5 bg-primary/5">
+            <div class="flex items-center gap-3">
+                <img src="/logo.png" alt="SETU Ops" class="size-8 rounded-lg object-cover bg-white"/>
+                <div>
+                    <p class="text-sm font-bold">SETU Ops Assistant</p>
+                    <p class="text-[10px] text-emerald-accent uppercase tracking-widest">Online</p>
+                </div>
+            </div>
+            <button id="chat-close" class="text-slate-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-sm">close</span>
+            </button>
+        </div>
+        <div class="p-5 h-64 overflow-y-auto flex flex-col gap-3" id="chat-messages">
+            <div class="flex gap-2">
+                <div class="size-7 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-xs">smart_toy</span>
+                </div>
+                <div class="bg-white/5 rounded-xl rounded-tl-none px-4 py-2.5 text-sm text-slate-300 max-w-[80%]">
+                    Hello! I'm the SETU Ops Virtual Assistant. How can I help you automate your business today?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-white/5">
+            <form id="chat-form" class="flex gap-2">
+                <input id="chat-input" type="text" placeholder="Type a message..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-primary/40 transition-colors"/>
+                <button type="submit" class="size-10 bg-primary rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors flex-shrink-0">
+                    <span class="material-symbols-outlined text-white text-sm">send</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Audit Modal -->
+<div id="audit-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm" style="display:none;">
+    <div class="w-full max-w-md bg-[#0f172a] border border-primary/20 rounded-2xl shadow-2xl p-8 relative">
+        <button id="audit-close" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="size-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary">analytics</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Get Your Free Audit</h3>
+        <p class="text-slate-400 text-sm mb-6">We'll analyze your current workflows and show you exactly where automation can save you time and money.</p>
+        <form id="audit-form" class="flex flex-col gap-4">
+            <input type="text" name="name" placeholder="Your Name" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-primary/40 transition-colors text-sm" required/>
+            <input type="email" name="email" id="audit-email" placeholder="work@company.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-primary/40 transition-colors text-sm" required/>
+            <input type="tel" name="phone" placeholder="WhatsApp / Phone Number" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-primary/40 transition-colors text-sm" required/>
+            <input type="text" name="company" placeholder="Company Name" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-primary/40 transition-colors text-sm"/>
+            <button type="submit" class="w-full py-3.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 text-sm">
+                Book My Free Audit →
+            </button>
+        </form>
+        <p class="text-[10px] text-slate-600 mt-4 text-center uppercase tracking-widest">No spam. 100% confidential.</p>
+    </div>
+</div>
+
+<!-- Success Toast -->
+<div id="toast" class="fixed top-6 right-6 z-[200] bg-emerald-accent text-navy-900 px-6 py-3 rounded-xl font-bold text-sm shadow-lg transform translate-x-full transition-transform duration-300 flex items-center gap-2">
+    <span class="material-symbols-outlined text-sm">check_circle</span>
+    <span id="toast-msg">Done!</span>
+</div>
+
+<nav class="sticky top-0 z-40 glass-nav w-full">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="logo-wrap size-10 flex-shrink-0">
+                <img src="/logo.png" alt="SETU Ops Logo" class="size-9 rounded-lg object-contain"/>
+            </div>
+            <span class="text-xl font-bold tracking-tight">SETU<span class="text-primary">OPS</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="#problem">Problem</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="#solution">Architecture</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">Process</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="#case-studies">Case Studies</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="#services">Services</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <button class="hidden md:block px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 audit-trigger">
+                Get a Free Audit
+            </button>
+            <!-- Hamburger -->
+            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+                <span class="w-6 h-0.5 bg-slate-300 transition-all duration-300" id="ham-1"></span>
+                <span class="w-6 h-0.5 bg-slate-300 transition-all duration-300" id="ham-2"></span>
+                <span class="w-4 h-0.5 bg-slate-300 transition-all duration-300" id="ham-3"></span>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile menu drawer -->
+    <div id="mobile-menu" class="md:hidden border-t border-white/5">
+        <div class="flex flex-col px-6 py-4 gap-4">
+            <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-white/5" href="#problem">Problem</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-white/5" href="#solution">Architecture</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-white/5" href="#how-it-works">Process</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-white/5" href="#case-studies">Case Studies</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors py-2 border-b border-white/5" href="#services">Services</a>
+            <button class="w-full py-3 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-all audit-trigger mt-2">
+                Get a Free Audit
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="relative">
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex flex-col items-center justify-center px-6 overflow-hidden pt-20">
+        <div class="absolute inset-0 hero-gradient -z-10"></div>
+        <div class="absolute inset-0 opacity-40 pointer-events-none overflow-hidden">
+            <svg class="absolute top-0 left-0" height="100%" viewBox="0 0 1440 800" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke-width="1.5">
+                    <path class="opacity-30" d="M0 200 H300 L350 150 H600 L650 200 H1440" stroke="#0da6f2"></path>
+                    <path class="circuit-trace" d="M0 200 H300 L350 150 H600 L650 200 H1440" stroke="#0da6f2" stroke-width="0.5"></path>
+                    <path class="opacity-30" d="M1440 600 H1100 L1050 650 H800 L750 600 H0" stroke="#34d399"></path>
+                    <path class="circuit-trace" d="M1440 600 H1100 L1050 650 H800 L750 600 H0" stroke="#34d399" stroke-width="0.5"></path>
+                    <path class="opacity-20" d="M400 0 V300 L450 350 V500 L400 550 V800" stroke="#0da6f2"></path>
+                    <path class="opacity-20" d="M1000 0 V300 L950 350 V500 L1000 550 V800" stroke="#34d399"></path>
+                </g>
+                <g>
+                    <circle class="animate-pulse" cx="350" cy="150" fill="#0da6f2" r="4"></circle>
+                    <circle cx="600" cy="150" fill="#0da6f2" r="4"></circle>
+                    <circle class="animate-pulse" cx="1050" cy="650" fill="#34d399" r="4"></circle>
+                    <circle cx="800" cy="650" fill="#34d399" r="4"></circle>
+                    <rect fill="none" height="8" stroke="#0da6f2" stroke-width="1" width="8" x="296" y="196"></rect>
+                    <rect fill="none" height="8" stroke="#34d399" stroke-width="1" width="8" x="1096" y="596"></rect>
+                </g>
+            </svg>
+        </div>
+        <div class="max-w-4xl text-center z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Bangladesh's Premier AI Automation Agency
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+                Bridging the Gap Between <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-accent">Manual Work</span> and AI Scale
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                We build the technical bridge (SETU) that transforms repetitive workflows into intelligent, automated systems. Precision-engineered for modern enterprises.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button class="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all text-lg shadow-xl shadow-primary/30 audit-trigger">
+                    Start Your Automation
+                </button>
+                <button class="w-full sm:w-auto px-10 py-4 bg-transparent border border-slate-800 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-lg" id="docs-btn">
+                    View Technical Docs
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-32 px-6 max-w-7xl mx-auto" id="problem">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+            <div class="max-w-2xl">
+                <h2 class="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">The Diagnosis</h2>
+                <h3 class="text-4xl font-bold">The Efficiency Leak</h3>
+                <p class="text-slate-400 mt-4">Unoptimized manual processes are the silent killers of enterprise growth in Bangladesh.</p>
+            </div>
+            <div class="text-right">
+                <span class="text-7xl font-bold text-slate-800/30">01</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 bento-card p-8 rounded-2xl flex flex-col justify-between min-h-[320px] relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-20 pointer-events-none">
+                    <svg fill="none" height="240" viewBox="0 0 100 100" width="240" xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="#0da6f2" stroke-width="0.25">
+                            <circle cx="50" cy="50" r="48"></circle>
+                            <circle cx="50" cy="50" r="30"></circle>
+                            <path d="M0 50 H100 M50 0 V100"></path>
+                            <path d="M15 15 L85 85 M85 15 L15 85"></path>
+                            <rect height="30" stroke-dasharray="2 1" width="30" x="35" y="35"></rect>
+                            <text fill="#0da6f2" font-family="monospace" font-size="2" x="52" y="48">COORD_X: 50.00</text>
+                            <text fill="#0da6f2" font-family="monospace" font-size="2" x="52" y="52">COORD_Y: 50.00</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="inline-flex items-center text-red-500 font-bold text-sm mb-8 gap-2 uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-sm">error</span>
+                    <span>Error</span>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-3">Inventory Sync Lag</h4>
+                    <p class="text-slate-400 max-w-md">Inaccurate stock levels affecting sales and customer trust. Syncing across multi-channel platforms manually is a recipe for disaster.</p>
+                </div>
+                <div class="mt-8 flex gap-2">
+                    <span class="px-3 py-1 rounded-md bg-navy-800/50 border border-white/5 text-[10px] text-slate-300 uppercase font-bold tracking-wider">#E-commerce</span>
+                    <span class="px-3 py-1 rounded-md bg-navy-800/50 border border-white/5 text-[10px] text-slate-300 uppercase font-bold tracking-wider">#Logistics</span>
+                </div>
+            </div>
+            <div class="bento-card p-8 rounded-2xl flex flex-col items-center text-center">
+                <div class="text-orange-500 font-bold text-2xl mb-6 uppercase tracking-widest italic">timer</div>
+                <h4 class="text-xl font-bold mb-4">Manual Data Entry</h4>
+                <p class="text-slate-400 text-sm">Teams spend 40% of their time copy-pasting data between spreadsheets and CRMs.</p>
+                <div class="mt-auto pt-8 w-full">
+                    <div class="w-full bg-navy-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-orange-500 h-full w-[40%]"></div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-3 text-left uppercase font-bold tracking-tighter">Human Error Probability: 12%</p>
+                </div>
+            </div>
+            <div class="bento-card p-8 rounded-2xl">
+                <div class="text-primary font-bold text-sm mb-6 uppercase tracking-widest flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">chat_bubble</span>
+                    <span>Communication</span>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Slow Response</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Leads lost on messaging apps due to delayed human engagement during peak hours.</p>
+            </div>
+            <div class="md:col-span-2 relative overflow-hidden bento-card rounded-2xl p-8 flex items-center">
+                <div class="relative z-10 w-1/2">
+                    <h4 class="text-2xl font-bold mb-3">The Fragmented Ecosystem</h4>
+                    <p class="text-slate-400 text-sm">Your tools don't talk to each other. We build the connectors.</p>
+                </div>
+                <div class="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center p-8">
+                    <div class="grid grid-cols-2 gap-3 opacity-40">
+                        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-xs">database</span><span class="text-[10px] font-bold uppercase">database</span></div>
+                        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span><span class="text-[10px] font-bold uppercase">mail</span></div>
+                        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-xs">cloud</span><span class="text-[10px] font-bold uppercase">cloud</span></div>
+                        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-xs">api</span><span class="text-[10px] font-bold uppercase">api</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-32 bg-navy-900/20 relative" id="solution">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="text-emerald-accent text-sm font-bold uppercase tracking-[0.2em] mb-4">The Solution</h2>
+                <h3 class="text-4xl md:text-5xl font-bold">Intelligent Enterprise Architecture</h3>
+            </div>
+            <div class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto">
+                <div class="flex flex-col items-center text-center gap-6 z-10">
+                    <div class="relative p-6 border border-primary/20 bg-primary/5 rounded-xl">
+                        <svg class="size-16 text-primary opacity-80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <rect height="18" rx="2" stroke-dasharray="2 1" width="18" x="3" y="3"></rect>
+                            <path d="M12 8v8M8 12h8" opacity="0.5"></path>
+                            <circle cx="12" cy="12" r="6"></circle>
+                        </svg>
+                        <div class="absolute -bottom-2 -right-2 bg-background-dark border border-primary/20 p-1 rounded">
+                            <span class="material-symbols-outlined text-[10px] text-primary">auto_awesome</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">AI Processing</p>
+                        <p class="text-[10px] text-slate-500 uppercase">Decision Engine</p>
+                    </div>
+                </div>
+                <div class="hidden md:block flex-1 h-[1px] bg-gradient-to-r from-primary/30 via-emerald-accent/30 to-neon-highlight/30 border-t border-dashed border-white/10 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 bg-background-dark text-[8px] text-slate-600 font-mono tracking-tighter">DATA_BRIDGE_V2.0</div>
+                </div>
+                <div class="flex flex-col items-center text-center gap-6 z-10">
+                    <div class="relative p-6 border border-emerald-accent/20 bg-emerald-accent/5 rounded-xl">
+                        <svg class="size-16 text-emerald-accent opacity-80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path d="M4 4h16v12H4z" stroke-dasharray="2 1"></path>
+                            <path d="M8 20l4-4 4 4"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div class="absolute -bottom-2 -right-2 bg-background-dark border border-emerald-accent/20 p-1 rounded">
+                            <span class="material-symbols-outlined text-[10px] text-emerald-accent">sync_alt</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">Messaging API</p>
+                        <p class="text-[10px] text-slate-500 uppercase">Seamless Comms</p>
+                    </div>
+                </div>
+                <div class="hidden md:block flex-1 h-[1px] bg-gradient-to-r from-emerald-accent/30 via-neon-highlight/30 to-transparent border-t border-dashed border-white/10 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 bg-background-dark text-[8px] text-slate-600 font-mono tracking-tighter">SYNC_PROTOCOL</div>
+                </div>
+                <div class="flex flex-col items-center text-center gap-6 z-10">
+                    <div class="relative p-6 border border-neon-highlight/20 bg-neon-highlight/5 rounded-xl">
+                        <svg class="size-16 text-neon-highlight opacity-80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <rect height="15" rx="2" width="20" x="2" y="7"></rect>
+                            <path d="M17 2l-5 5-5-5"></path>
+                            <path d="M7 12h10" stroke-dasharray="1 1"></path>
+                        </svg>
+                        <div class="absolute -bottom-2 -right-2 bg-background-dark border border-neon-highlight/20 p-1 rounded">
+                            <span class="material-symbols-outlined text-[10px] text-neon-highlight">inventory_2</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-sm">Inventory Sync</p>
+                        <p class="text-[10px] text-slate-500 uppercase">Live Updating</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 border-l border-primary/20 bg-white/5 rounded-r-xl">
+                    <h5 class="font-bold mb-3 uppercase text-xs tracking-widest text-primary">Technical Precision</h5>
+                    <p class="text-sm text-slate-400 leading-relaxed">99.9% uptime for business-critical automated workflows and API calls.</p>
+                </div>
+                <div class="p-8 border-l border-emerald-accent/20 bg-white/5 rounded-r-xl">
+                    <h5 class="font-bold mb-3 uppercase text-xs tracking-widest text-emerald-accent">End-to-End Encryption</h5>
+                    <p class="text-sm text-slate-400 leading-relaxed">Your data never leaves your secure cloud environment. Compliance first.</p>
+                </div>
+                <div class="p-8 border-l border-neon-highlight/20 bg-white/5 rounded-r-xl">
+                    <h5 class="font-bold mb-3 uppercase text-xs tracking-widest text-neon-highlight">Scalable Infrastructure</h5>
+                    <p class="text-sm text-slate-400 leading-relaxed">Built on top-tier cloud providers to handle 1 to 1,000,000 tasks daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-32 px-6 max-w-7xl mx-auto" id="case-studies">
+        <div class="flex items-center justify-between mb-16">
+            <h3 class="text-4xl font-bold">Case Studies</h3>
+            <div class="flex gap-4">
+                <button id="prev-case" class="size-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">west</span></button>
+                <button id="next-case" class="size-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-white/5 transition-colors"><span class="material-symbols-outlined text-sm">east</span></button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 min-h-[640px]">
+            <div class="md:col-span-2 md:row-span-2 bento-card rounded-2xl overflow-hidden flex flex-col group">
+                <div class="h-80 bg-[#0a1017] relative overflow-hidden blueprint-grid p-6">
+                    <div class="w-full h-full border border-primary/20 relative flex items-center justify-center">
+                        <svg class="w-full h-full opacity-80" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" stroke="#0da6f2" stroke-width="0.75">
+                                <rect height="60" stroke-width="1.5" width="80" x="160" y="120"></rect>
+                                <text fill="#0da6f2" font-family="monospace" font-size="8" font-weight="bold" x="175" y="155">CENTRAL_OPS</text>
+                                <path d="M160 150 H60 V80 H90"></path>
+                                <circle cx="90" cy="80" fill="#0da6f2" r="3"></circle>
+                                <path d="M240 150 H340 V220 H310"></path>
+                                <rect fill="#0da6f2" height="8" width="8" x="306" y="216"></rect>
+                                <path d="M200 120 V50 H280"></path>
+                                <path d="M275 45 L285 50 L275 55 Z" fill="#0da6f2" stroke="none"></path>
+                                <path d="M200 180 V250 H120"></path>
+                                <circle cx="120" cy="250" r="4" stroke-dasharray="1"></circle>
+                                <g fill="#0da6f2" font-family="monospace" font-size="6">
+                                    <text x="60" y="70">MARKETPLACE_API_v3</text>
+                                    <text x="290" y="210">ERP_SYNC_NODE</text>
+                                    <text x="260" y="40">CLOUD_INST_01</text>
+                                    <text x="80" y="245">LOCAL_DB_CACHE</text>
+                                    <text opacity="0.4" x="10" y="290">LATENCY: 12ms</text>
+                                    <text opacity="0.4" x="320" y="290">SEC: AES-256</text>
+                                </g>
+                                <path d="M20 20 V280 M20 20 H380" stroke-dasharray="2 2" stroke-opacity="0.2"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="absolute top-6 left-6 px-3 py-1 bg-primary text-[9px] font-bold uppercase tracking-widest rounded-sm">Logistics Sector</div>
+                </div>
+                <div class="p-10 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4">Inventory Sync Infrastructure</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">How we connected major marketplaces, storefronts, and local ERP systems to eliminate 95% of stock-out errors.</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div class="text-neon-highlight font-bold text-4xl">40% <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-widest mt-1">Efficiency Increase</span></div>
+                        <span class="material-symbols-outlined text-primary text-3xl">arrow_outward</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-2 bento-card rounded-2xl p-10 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Automated Lead Qualification</h4>
+                    <p class="text-slate-400 text-sm italic leading-relaxed">"SETU Ops cut our lead response time from 4 hours to 4 seconds."</p>
+                </div>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="size-12 rounded-full bg-slate-900 border border-primary/40 flex items-center justify-center p-2">
+                        <svg class="text-primary w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L12 6M12 18L12 22M2 12L6 12M18 12L22 12" stroke-width="1"></path>
+                            <circle cx="12" cy="12" r="4" stroke-width="1.5"></circle>
+                            <circle cx="12" cy="12" r="8" stroke-dasharray="2 2" stroke-width="0.5"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider">Technical Director</p>
+                        <p class="text-[10px] text-slate-500 tracking-widest uppercase mt-0.5">SaaS Infrastructure</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card rounded-2xl p-8 text-center flex flex-col items-center justify-center">
+                <h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Time Saved</h5>
+                <div class="text-5xl font-bold text-primary">1,200h</div>
+                <p class="text-[10px] text-slate-500 mt-4 uppercase tracking-widest">Per Month / Client Avg.</p>
+            </div>
+            <div class="bento-card rounded-2xl p-8 text-center flex flex-col items-center justify-center">
+                <h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">ROI</h5>
+                <div class="text-5xl font-bold text-emerald-accent">12x</div>
+                <p class="text-[10px] text-slate-500 mt-4 uppercase tracking-widest">Annual Projection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-16 px-6 border-y border-white/5 bg-navy-900/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center reveal">
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2" data-count="95">0</div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">% Error Reduction</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-emerald-accent mb-2" data-count="1200">0</div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Hours Saved / Month</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-neon-highlight mb-2" data-count="40">0</div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">% Efficiency Gain</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2" data-count="12">0</div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">x Average ROI</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-32 px-6 max-w-7xl mx-auto" id="how-it-works">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">The Process</h2>
+            <h3 class="text-4xl md:text-5xl font-bold">How SETU Builds Your Bridge</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:0ms">
+                <div class="size-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined text-primary">search</span>
+                </div>
+                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-3">Step 01</div>
+                <h4 class="text-lg font-bold mb-3">Discovery Audit</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">We map your current workflows, identify bottlenecks, and quantify the cost of manual operations.</p>
+            </div>
+            <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:100ms">
+                <div class="size-12 rounded-xl bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined text-emerald-accent">architecture</span>
+                </div>
+                <div class="text-[10px] text-emerald-accent font-bold uppercase tracking-widest mb-3">Step 02</div>
+                <h4 class="text-lg font-bold mb-3">Blueprint Design</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Our engineers design a custom automation architecture tailored to your tech stack and business logic.</p>
+            </div>
+            <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:200ms">
+                <div class="size-12 rounded-xl bg-neon-highlight/10 border border-neon-highlight/20 flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined text-neon-highlight">build</span>
+                </div>
+                <div class="text-[10px] text-neon-highlight font-bold uppercase tracking-widest mb-3">Step 03</div>
+                <h4 class="text-lg font-bold mb-3">Build & Integrate</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">We build, test, and deploy your automation pipelines with zero disruption to existing operations.</p>
+            </div>
+            <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:300ms">
+                <div class="size-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined text-primary">monitoring</span>
+                </div>
+                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-3">Step 04</div>
+                <h4 class="text-lg font-bold mb-3">Monitor & Scale</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">24/7 monitoring, performance reporting, and continuous optimization as your business grows.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-32 px-6 bg-navy-900/20" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 reveal">
+                <div>
+                    <h2 class="text-emerald-accent text-sm font-bold uppercase tracking-[0.2em] mb-4">What We Build</h2>
+                    <h3 class="text-4xl font-bold">Our Core Services</h3>
+                    <p class="text-slate-400 mt-4 max-w-lg">End-to-end automation solutions engineered for Bangladesh's fastest-growing enterprises.</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-7xl font-bold text-slate-800/30">04</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:0ms">
+                    <div class="size-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">smart_toy</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">AI Chatbot & Lead Automation</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Deploy intelligent bots on WhatsApp, Facebook, and your website. Qualify leads, answer FAQs, and book appointments — 24/7.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">WhatsApp</span>
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">Facebook</span>
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">Web Chat</span>
+                    </div>
+                </div>
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:100ms">
+                    <div class="size-12 rounded-xl bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-emerald-accent">inventory_2</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Inventory & ERP Sync</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Real-time stock synchronization across Daraz, Shopify, WooCommerce, and local ERP systems. Eliminate overselling forever.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold uppercase">Daraz</span>
+                        <span class="px-2 py-1 rounded-md bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold uppercase">Shopify</span>
+                        <span class="px-2 py-1 rounded-md bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold uppercase">ERP</span>
+                    </div>
+                </div>
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:200ms">
+                    <div class="size-12 rounded-xl bg-neon-highlight/10 border border-neon-highlight/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-neon-highlight">mail</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Email & CRM Automation</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Automated drip campaigns, follow-up sequences, and CRM data enrichment. Turn cold leads into paying customers on autopilot.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">HubSpot</span>
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">Mailchimp</span>
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">Gmail</span>
+                    </div>
+                </div>
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:0ms">
+                    <div class="size-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">account_tree</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Workflow & API Integration</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Connect any two systems with custom API bridges. Automate data flows between tools that were never designed to talk to each other.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">REST API</span>
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">Webhooks</span>
+                        <span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">n8n</span>
+                    </div>
+                </div>
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:100ms">
+                    <div class="size-12 rounded-xl bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-emerald-accent">bar_chart</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Reporting & Analytics</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Automated daily, weekly, and monthly reports delivered to your inbox. Real-time dashboards with KPIs that actually matter.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold uppercase">Google Sheets</span>
+                        <span class="px-2 py-1 rounded-md bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold uppercase">Looker</span>
+                    </div>
+                </div>
+                <div class="service-card p-8 rounded-2xl reveal" style="transition-delay:200ms">
+                    <div class="size-12 rounded-xl bg-neon-highlight/10 border border-neon-highlight/20 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-neon-highlight">support_agent</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Custom AI Agents</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Purpose-built AI agents for your specific business processes — from document processing to intelligent customer support escalation.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">GPT-4</span>
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">Gemini</span>
+                        <span class="px-2 py-1 rounded-md bg-neon-highlight/10 text-neon-highlight text-[10px] font-bold uppercase">Claude</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-4xl mx-auto bento-card p-12 md:p-16 rounded-[2rem] border-primary/10 bg-gradient-to-br from-navy-900/40 to-background-dark text-center reveal">
+            <h3 class="text-3xl md:text-5xl font-bold mb-8">Stop Working <span class="italic font-light">Harder</span>.<br/>Start Building <span class="text-primary underline decoration-primary/20 underline-offset-[12px]">Bridges</span>.</h3>
+            <p class="text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">Get a technical deep-dive of your current operations. Our audits reveal exactly where automation can save you thousands.</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto bg-navy-800/30 p-2 rounded-2xl border border-white/5">
+                <input class="flex-1 bg-transparent border-none rounded-xl px-6 py-4 text-white focus:ring-0 placeholder:text-slate-600" placeholder="work@company.com" type="email" id="inline-email"/>
+                <button class="px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/30 whitespace-nowrap audit-trigger" id="inline-audit-btn">
+                    Book Your Free Audit
+                </button>
+            </div>
+            <p class="text-[10px] text-slate-600 mt-8 uppercase tracking-[0.2em] font-bold">Available for selective partnerships in 2025</p>
+        </div>
+    </section>
+    </section>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-to-top" class="fixed bottom-8 left-8 z-40 p-3 bg-white/5 border border-white/10 text-primary rounded-full shadow-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 opacity-0 pointer-events-none translate-y-4" aria-label="Scroll to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+</main>
+
+<footer class="py-16 px-6 border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="logo-wrap size-10 flex-shrink-0">
+                        <img src="/logo.png" alt="SETU Ops" class="size-9 rounded-lg object-contain"/>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">SETU<span class="text-primary">OPS</span></span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-xs">Bangladesh's premier AI automation agency. We build the technical bridges that transform manual work into intelligent scale.</p>
+                <div class="flex items-center gap-1.5 mt-4 text-[10px] text-slate-600 uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[10px]">location_on</span>
+                    <span>Dhaka, Bangladesh</span>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Navigation</h5>
+                <div class="flex flex-col gap-3">
+                    <a href="#problem" class="text-sm text-slate-500 hover:text-white transition-colors">The Problem</a>
+                    <a href="#solution" class="text-sm text-slate-500 hover:text-white transition-colors">Architecture</a>
+                    <a href="#how-it-works" class="text-sm text-slate-500 hover:text-white transition-colors">Process</a>
+                    <a href="#case-studies" class="text-sm text-slate-500 hover:text-white transition-colors">Case Studies</a>
+                    <a href="#services" class="text-sm text-slate-500 hover:text-white transition-colors">Services</a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Connect</h5>
+                <div class="flex flex-col gap-3">
+                    <a href="https://www.linkedin.com/company/107139047" class="text-sm text-slate-500 hover:text-white transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">link</span>LinkedIn</a>
+                    <a href="https://facebook.com/setuBangladesh/" class="text-sm text-slate-500 hover:text-white transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">group</span>Facebook</a>
+                    <a href="https://x.com/SetuBangladesh" class="text-sm text-slate-500 hover:text-white transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat_bubble</span>X (Twitter)</a>
+                    <a href="mailto:hello@setuops.xyz" class="text-sm text-slate-500 hover:text-white transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span>hello@setuops.xyz</a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-[10px] text-slate-600 uppercase tracking-widest">© 2025 SETU OPS. ALL RIGHTS RESERVED.</p>
+            <p class="text-[10px] text-slate-700 uppercase tracking-widest">Built with precision in Dhaka, Bangladesh</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ── Smooth scroll for nav links ──────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') { e.preventDefault(); return; }
+            const target = document.querySelector(href);
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
+
+    // ── Toast helper ─────────────────────────────────────────────────────────
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toast-msg').textContent = msg;
+        toast.style.transform = 'translateX(0)';
+        setTimeout(() => { toast.style.transform = 'translateX(150%)'; }, 3500);
+    }
+
+    // ── Audit Modal ──────────────────────────────────────────────────────────
+    const auditModal = document.getElementById('audit-modal');
+    const auditClose = document.getElementById('audit-close');
+    const auditForm  = document.getElementById('audit-form');
+
+    document.querySelectorAll('.audit-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Pre-fill email if typed in inline input
+            const inlineEmail = document.getElementById('inline-email');
+            const auditEmail  = document.getElementById('audit-email');
+            if (inlineEmail && inlineEmail.value) auditEmail.value = inlineEmail.value;
+            auditModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    auditClose.addEventListener('click', closeAuditModal);
+    auditModal.addEventListener('click', e => { if (e.target === auditModal) closeAuditModal(); });
+
+    function closeAuditModal() {
+        auditModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // ── Global Session & Webhooks ─────────────────────────────────────────────
+    const sessionId = 'session_' + Math.random().toString(36).slice(2);
+    const N8N_AUDIT_URL = 'https://setuops.app.n8n.cloud/webhook/audit';
+    const N8N_CHAT_URL  = 'https://setuops.app.n8n.cloud/webhook/572b2569-4df6-45fd-a711-a1f9e24b8599/chat';
+
+    auditForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        
+        const submitBtn = auditForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Processing Lead...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(auditForm);
+        const payload = {
+            sessionId: sessionId,
+            action: 'audit_request',
+            chatInput: formData.get('email'), // Using email as chatInput column surrogate
+            business_type: formData.get('company'),
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            toolCallId: ''
+        };
+        
+        try {
+            const response = await fetch(N8N_AUDIT_URL, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                closeAuditModal();
+                showToast('Audit request secured! We will contact you shortly.');
+                auditForm.reset();
+            } else {
+                showToast('System busy. Please try again or email us directly.');
+            }
+        } catch (error) {
+            showToast('Connection error. Please check your network.');
+        } finally {
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    // ── Chat Modal ───────────────────────────────────────────────────────────
+    const chatBtn      = document.getElementById('chat-btn');
+    const chatModal    = document.getElementById('chat-modal-box');
+    const chatClose    = document.getElementById('chat-close');
+    const chatForm     = document.getElementById('chat-form');
+    const chatInput    = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    let chatOpen = false;
+
+    chatBtn.addEventListener('click', e => {
+        e.preventDefault();
+        chatOpen = !chatOpen;
+        if (chatOpen) {
+            chatModal.style.display = 'block';
+            requestAnimationFrame(() => {
+                chatModal.style.opacity = '1';
+                chatModal.style.transform = 'translateY(0)';
+            });
+            chatInput.focus();
+        } else {
+            closeChatModal();
+        }
+    });
+
+    chatClose.addEventListener('click', closeChatModal);
+
+    function closeChatModal() {
+        chatOpen = false;
+        chatModal.style.opacity = '0';
+        chatModal.style.transform = 'translateY(1rem)';
+        setTimeout(() => { chatModal.style.display = 'none'; }, 300);
+    }
+
+    function addMessage(text, isUser) {
+        const div = document.createElement('div');
+        div.className = 'flex gap-2' + (isUser ? ' justify-end' : '');
+        if (isUser) {
+            div.innerHTML = `<div class="bg-primary/20 rounded-xl rounded-tr-none px-4 py-2.5 text-sm text-slate-200 max-w-[80%]">${text}</div>`;
+        } else {
+            div.innerHTML = `
+                <div class="size-7 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-xs">smart_toy</span>
+                </div>
+                <div class="bg-white/5 rounded-xl rounded-tl-none px-4 py-2.5 text-sm text-slate-300 max-w-[80%]">${text}</div>`;
+        }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // ── n8n Chat Webhook ─────────────────────────────────────────────────────
+    function addTypingIndicator() {
+        const div = document.createElement('div');
+        div.className = 'flex gap-2';
+        div.id = 'typing-indicator';
+        div.innerHTML = `
+            <div class="size-7 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-primary text-xs">smart_toy</span>
+            </div>
+            <div class="bg-white/5 rounded-xl rounded-tl-none px-4 py-3 text-sm text-slate-400 flex items-center gap-1.5">
+                <span class="size-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay:0ms"></span>
+                <span class="size-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay:150ms"></span>
+                <span class="size-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay:300ms"></span>
+            </div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+    }
+
+    chatForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+        addMessage(msg, true);
+        chatInput.value = '';
+        chatInput.disabled = true;
+        addTypingIndicator();
+
+        try {
+            const res = await fetch(N8N_CHAT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chatInput: msg, sessionId })
+            });
+            removeTypingIndicator();
+            if (res.ok) {
+                const data = await res.json();
+                // n8n chat webhook returns { output: "..." } or { text: "..." }
+                const reply = data.output || data.text || data.message || data.response || JSON.stringify(data);
+                addMessage(reply, false);
+            } else {
+                addMessage("Sorry, I'm having trouble connecting right now. Please try again shortly.", false);
+            }
+        } catch (err) {
+            removeTypingIndicator();
+            addMessage("Connection error. Please check your internet and try again.", false);
+        } finally {
+            chatInput.disabled = false;
+            chatInput.focus();
+        }
+    });
+
+
+    // ── Case Studies nav (cosmetic) ──────────────────────────────────────────
+    document.getElementById('prev-case').addEventListener('click', () => showToast('Showing previous case study'));
+    document.getElementById('next-case').addEventListener('click', () => showToast('Showing next case study'));
+
+    // ── Docs button ──────────────────────────────────────────────────────────
+    document.getElementById('docs-btn').addEventListener('click', () => showToast('Documentation coming soon!'));
+
+    // ── Mobile hamburger menu ─────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const ham1 = document.getElementById('ham-1');
+    const ham2 = document.getElementById('ham-2');
+    const ham3 = document.getElementById('ham-3');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle('open', menuOpen);
+        // Animate to X
+        if (menuOpen) {
+            ham1.style.transform = 'rotate(45deg) translate(5px, 5px)';
+            ham2.style.opacity = '0';
+            ham3.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            ham3.style.width = '24px';
+        } else {
+            ham1.style.transform = '';
+            ham2.style.opacity = '1';
+            ham3.style.transform = '';
+            ham3.style.width = '';
+        }
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('click', () => {
+            menuOpen = false;
+            mobileMenu.classList.remove('open');
+            ham1.style.transform = '';
+            ham2.style.opacity = '1';
+            ham3.style.transform = '';
+            ham3.style.width = '';
+        });
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Animated counters ─────────────────────────────────────────────────────
+    function animateCounter(el, target, duration = 1800) {
+        let start = 0;
+        const step = (timestamp) => {
+            if (!start) start = timestamp;
+            const progress = Math.min((timestamp - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            el.textContent = Math.floor(eased * target).toLocaleString();
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString();
+        };
+        requestAnimationFrame(step);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('[data-count]').forEach(el => {
+                    animateCounter(el, parseInt(el.dataset.count));
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+        const parent = el.closest('section') || el.parentElement;
+        counterObserver.observe(parent);
+    });
+
+    // ── Scroll to Top ─────────────────────────────────────────────────────────
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        } else {
+            scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
