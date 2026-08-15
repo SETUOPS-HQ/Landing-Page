@@ -64,19 +64,19 @@
 }
 </script>
 
-<!-- Google Fonts & Material Symbols -->
+<!-- High-Performance Preconnects & Optimized Typography -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --ink: #0b0b0b;
   --paper: #efeee9;
   --muted: #a5a59f;
-  --line: rgba(11,11,11,.15);
-  --line-light: rgba(255,255,255,.15);
+  --line: rgba(11,11,11,.14);
+  --line-light: rgba(255,255,255,.14);
   --accent: #0da6f2;
   --accent-secondary: #10b981;
   --acid: #d7ff45;
@@ -97,6 +97,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 body.is-loading { overflow: hidden; }
 .no-js .preloader { display: none; }
@@ -180,7 +181,7 @@ button { cursor: pointer; }
 .cross:before { width: 14px; height: 1px; }
 .cross:after { width: 1px; height: 14px; }
 
-/* ── EXACT 3-COLUMN FLOATING PILL NAVBAR (MATCHING GENERATED-PAGE.HTML) ── */
+/* ── 3-COLUMN FLOATING PILL NAVBAR ── */
 .site-header {
   position: fixed;
   z-index: 990;
@@ -202,7 +203,7 @@ button { cursor: pointer; }
   margin: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   pointer-events: none;
-  transition: background-color 0.35s, backdrop-filter 0.35s, -webkit-backdrop-filter 0.35s, border-color 0.35s, box-shadow 0.35s, height 0.35s;
+  transition: background-color 0.35s, backdrop-filter 0.35s, -webkit-backdrop-filter 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
 .site-header a, .site-header button {
   pointer-events: auto;
@@ -243,7 +244,7 @@ button { cursor: pointer; }
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: .1em;
-  transition: .25s;
+  transition: background .2s, color .2s;
 }
 .nav a:hover {
   background: #fff;
@@ -267,7 +268,7 @@ button { cursor: pointer; }
   font-size: 11px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  transition: .25s;
+  transition: transform .2s, background .2s;
   white-space: nowrap;
 }
 .header-cta:hover {
@@ -759,7 +760,7 @@ button { cursor: pointer; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .12em;
-  transition: .25s;
+  transition: transform .2s, background .2s;
 }
 .cinematic-cta:hover { background: var(--acid); transform: translateY(-2px); }
 
@@ -773,7 +774,7 @@ button { cursor: pointer; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: .3s;
+  transition: background .3s, color .3s;
 }
 .stat:hover { background: var(--accent); color: #fff; }
 .stat:nth-child(2), .stat:nth-child(3) { background: #dedcd4; }
@@ -799,7 +800,7 @@ button { cursor: pointer; }
 .journal-item:nth-child(2) { grid-column: 6 / 13; margin-top: 60px; }
 .journal-item:nth-child(3) { grid-column: 1 / 8; }
 .journal-item:nth-child(4) { grid-column: 8 / 13; margin-top: -60px; }
-.journal-img { position: absolute; inset: 0; opacity: .4; filter: grayscale(1); transition: .5s; }
+.journal-img { position: absolute; inset: 0; opacity: .4; filter: grayscale(1); transition: opacity .4s, transform .4s; }
 .journal-item:hover .journal-img { opacity: .8; filter: grayscale(0); transform: scale(1.03); }
 .journal-meta { position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,.35); padding-top: 12px; display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
 .journal-item:before {
@@ -830,7 +831,7 @@ button { cursor: pointer; }
   font-size: clamp(17px, 2vw, 26px);
   font-weight: 600;
   text-align: left;
-  transition: .25s;
+  transition: padding-left .2s, color .2s;
 }
 .faq-item:hover .faq-q { padding-left: 10px; color: var(--accent); }
 .faq-a { height: 0; overflow: hidden; }
@@ -870,7 +871,7 @@ button { cursor: pointer; }
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
-  transition: .25s;
+  transition: transform .2s, background .2s;
 }
 .form-submit:hover { background: var(--acid); transform: translateY(-2px); }
 
@@ -898,7 +899,7 @@ button { cursor: pointer; }
 }
 .footer-word .slash { color: var(--accent); }
 
-/* ── MODAL & FLOATING WIDGETS ── */
+/* ── MODAL ── */
 .audit-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -936,118 +937,6 @@ button { cursor: pointer; }
 }
 .modal-close:hover { color: #fff; }
 
-/* AI Chat Floating Widget */
-.chat-trigger-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 800;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  border: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(13,166,242,.4);
-  transition: transform .3s;
-}
-.chat-trigger-btn:hover { transform: scale(1.08); }
-.chat-popup {
-  position: fixed;
-  bottom: 84px;
-  right: 20px;
-  z-index: 800;
-  width: 340px;
-  max-width: calc(100vw - 40px);
-  background: #111;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5);
-  display: none;
-  flex-direction: column;
-}
-.chat-header {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,.03);
-}
-.chat-messages {
-  height: 260px;
-  padding: 14px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.chat-msg {
-  padding: 9px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  line-height: 1.45;
-  max-width: 85%;
-}
-.chat-msg.bot { background: rgba(255,255,255,.08); color: #ddd; align-self: flex-start; }
-.chat-msg.user { background: var(--accent); color: #fff; align-self: flex-end; }
-
-/* Chat Quick Prompt Chips */
-.chat-chips {
-  display: flex;
-  gap: 6px;
-  padding: 0 14px 8px;
-  overflow-x: auto;
-}
-.chat-chip {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.12);
-  color: #ccc;
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 10px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all .2s;
-}
-.chat-chip:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.chat-form {
-  padding: 10px 14px;
-  border-top: 1px solid rgba(255,255,255,.1);
-  display: flex;
-  gap: 8px;
-}
-.chat-form input {
-  flex: 1;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 999px;
-  padding: 7px 12px;
-  color: #fff;
-  outline: none;
-  font-size: 12px;
-}
-.chat-form button {
-  background: var(--accent);
-  color: #fff;
-  border: 0;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-}
-
 /* Toast */
 #toast {
   position: fixed;
@@ -1068,8 +957,6 @@ button { cursor: pointer; }
 /* ═════════════════════════════════════════════════════════════════════════════
    RESPONSIVE MEDIA QUERIES (TABLETS & MOBILE)
 ═════════════════════════════════════════════════════════════════════════════ */
-
-/* Tablet & Smaller (<= 992px) */
 @media (max-width: 992px) {
   .site-header {
     left: 12px;
@@ -1122,7 +1009,6 @@ button { cursor: pointer; }
   .footer-main { grid-template-columns: 1fr; gap: 40px; }
 }
 
-/* Small Mobile (<= 640px) */
 @media (max-width: 640px) {
   :root { --pad: 16px; }
   
@@ -1217,7 +1103,7 @@ button { cursor: pointer; }
   <!-- ── FLOATING PILL NAVBAR ── -->
   <header class="site-header">
     <a href="#top" class="logo">
-      <img src="/logo.png" alt="SETU Ops Logo"/>
+      <img src="/logo.png" alt="SETU Ops Logo" width="28" height="28"/>
       <span><b>SETU</b><i>/</i><b>OPS</b></span>
     </a>
     
@@ -1255,7 +1141,7 @@ button { cursor: pointer; }
     <!-- Hero Section -->
     <section class="hero section">
       <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=2400&amp;q=90" alt="SETU Ops Technical Automation Engine" />
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=2000&amp;q=85" alt="SETU Ops Technical Automation Engine" fetchpriority="high" width="2000" height="1100" />
       </div>
       
       <div class="hero-topcopy">
@@ -1299,7 +1185,7 @@ button { cursor: pointer; }
 
       <div class="container grid12 intro-lower">
         <div class="intro-portrait">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="SETU Ops AI Data Engineering Terminal">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="SETU Ops AI Data Engineering Terminal" loading="lazy" decoding="async" width="1000" height="600">
         </div>
         <div class="keywords">
           AUTOMATION
@@ -1380,7 +1266,7 @@ button { cursor: pointer; }
             </p>
           </div>
           <div class="project-media hover-media">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=2000&amp;q=90" alt="Inventory Sync Architecture">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Inventory Sync Architecture" loading="lazy" decoding="async" width="1600" height="900">
           </div>
           <div class="project-side">
             01 / 04
@@ -1401,7 +1287,7 @@ button { cursor: pointer; }
             </p>
           </div>
           <div class="project-media hover-media">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=2000&amp;q=90" alt="AI Agent Workflow Intelligence">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="AI Agent Workflow Intelligence" loading="lazy" decoding="async" width="1600" height="900">
           </div>
           <div class="project-side">
             02 / 04
@@ -1422,7 +1308,7 @@ button { cursor: pointer; }
             </p>
           </div>
           <div class="project-media hover-media">
-            <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=2000&amp;q=90" alt="Automated Courier Dispatch Pipeline">
+            <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Automated Courier Dispatch Pipeline" loading="lazy" decoding="async" width="1600" height="900">
           </div>
           <div class="project-side">
             03 / 04
@@ -1443,7 +1329,7 @@ button { cursor: pointer; }
             </p>
           </div>
           <div class="project-media hover-media">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=2000&amp;q=90" alt="Financial Automation Telemetry">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Financial Automation Telemetry" loading="lazy" decoding="async" width="1600" height="900">
           </div>
           <div class="project-side">
             04 / 04
@@ -1470,7 +1356,7 @@ button { cursor: pointer; }
         <div class="cap-row">
           <div class="num">01</div>
           <div class="image">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="AI Conversational Agents">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="AI Conversational Agents" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <h3 class="display">AI Agents</h3>
           <p>
@@ -1481,7 +1367,7 @@ button { cursor: pointer; }
         <div class="cap-row">
           <div class="num">02</div>
           <div class="image">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="ERP & Database Sync">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ERP & Database Sync" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <h3 class="display">ERP &amp; Sync</h3>
           <p>
@@ -1492,7 +1378,7 @@ button { cursor: pointer; }
         <div class="cap-row">
           <div class="num">03</div>
           <div class="image">
-            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Custom API Architecture">
+            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Custom API Architecture" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <h3 class="display">Custom APIs</h3>
           <p>
@@ -1565,7 +1451,7 @@ button { cursor: pointer; }
     <section class="testimonial paper">
       <div class="container grid12 quote-grid">
         <div class="quote-photo">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Tanvir Ahmed, Apex Logistics">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Tanvir Ahmed, Apex Logistics" loading="lazy" decoding="async" width="600" height="600">
         </div>
         <blockquote class="quote display">
           “SETU Ops built the bridge between our manual operational chaos and automated scale. We eliminated stock discrepancies and cut overhead by 40% in our first quarter.”
@@ -1597,44 +1483,44 @@ button { cursor: pointer; }
       <div class="container">
         <h2 class="display">System Integrations Archive</h2>
         <div class="archive-list">
-          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=900&amp;q=85">
+          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
             <span>2026</span>
             <span>Daraz &amp; Shopify</span>
             <span>Multi-Store Stock Sync Engine</span>
             <div class="archive-thumb">
-              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="Daraz Sync">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=200&amp;q=75" alt="Daraz Sync" loading="lazy" decoding="async" width="200" height="200">
             </div>
           </div>
-          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=900&amp;q=85">
+          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
             <span>2026</span>
             <span>WhatsApp Business</span>
             <span>Autonomous Customer Qualification AI</span>
             <div class="archive-thumb">
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="WhatsApp AI">
+              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=200&amp;q=75" alt="WhatsApp AI" loading="lazy" decoding="async" width="200" height="200">
             </div>
           </div>
-          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=900&amp;q=85">
+          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
             <span>2025</span>
             <span>HubSpot &amp; Gmail</span>
             <span>Automated Lead Enrichment Pipeline</span>
             <div class="archive-thumb">
-              <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="HubSpot Automation">
+              <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=200&amp;q=75" alt="HubSpot Automation" loading="lazy" decoding="async" width="200" height="200">
             </div>
           </div>
-          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=900&amp;q=85">
+          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
             <span>2025</span>
             <span>n8n &amp; PostgreSQL</span>
             <span>Automated Financial Reconciliation</span>
             <div class="archive-thumb">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="n8n Pipeline">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=200&amp;q=75" alt="n8n Pipeline" loading="lazy" decoding="async" width="200" height="200">
             </div>
           </div>
-          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=900&amp;q=85">
+          <div class="archive-row" data-preview="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
             <span>2024</span>
             <span>Courier APIs (Pathao/Steadfast)</span>
             <span>One-Click Consignment Dispatch</span>
             <div class="archive-thumb">
-              <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="Courier API">
+              <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=200&amp;q=75" alt="Courier API" loading="lazy" decoding="async" width="200" height="200">
             </div>
           </div>
         </div>
@@ -1644,12 +1530,12 @@ button { cursor: pointer; }
     <!-- Cinematic Section -->
     <section class="cinematic section">
       <div class="cinematic-bg">
-        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&amp;fit=crop&amp;w=2400&amp;q=90" alt="Future Automation Architecture">
+        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&amp;fit=crop&amp;w=2000&amp;q=85" alt="Future Automation Architecture" loading="lazy" decoding="async" width="2000" height="1000">
       </div>
       <div class="cinematic-inner">
         <h2 class="display">We build the bridges to what comes next.</h2>
         <div class="cinematic-card">
-          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="3D Automation Algorithm">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="3D Automation Algorithm" loading="lazy" decoding="async" width="600" height="800">
         </div>
         <button class="cinematic-cta audit-trigger">Start your automation ↗</button>
       </div>
@@ -1684,7 +1570,7 @@ button { cursor: pointer; }
         <div class="journal-grid">
           <article class="journal-item">
             <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Multi-Store Sync Architecture">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Multi-Store Sync Architecture" loading="lazy" decoding="async" width="900" height="600">
             </div>
             <div class="journal-meta">
               <span>01 / Multi-Store Architecture</span>
@@ -1693,7 +1579,7 @@ button { cursor: pointer; }
           </article>
           <article class="journal-item">
             <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="AI Agent Lead Speed">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="AI Agent Lead Speed" loading="lazy" decoding="async" width="900" height="600">
             </div>
             <div class="journal-meta">
               <span>02 / Eliminating Response Lag</span>
@@ -1702,7 +1588,7 @@ button { cursor: pointer; }
           </article>
           <article class="journal-item">
             <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Autonomous Enterprise Scale">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Autonomous Enterprise Scale" loading="lazy" decoding="async" width="900" height="600">
             </div>
             <div class="journal-meta">
               <span>03 / Autonomous Enterprise Agents</span>
@@ -1711,7 +1597,7 @@ button { cursor: pointer; }
           </article>
           <article class="journal-item">
             <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="n8n Serverless Infrastructure">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="n8n Serverless Infrastructure" loading="lazy" decoding="async" width="900" height="600">
             </div>
             <div class="journal-meta">
               <span>04 / n8n vs Legacy Zapier</span>
@@ -1844,7 +1730,7 @@ button { cursor: pointer; }
           <a href="https://x.com/SetuBangladesh" target="_blank" rel="noopener">X (Twitter)</a>
         </div>
         <div>
-          Dhaka, Bangladesh / <span id="clock">19:35 BST</span>
+          Dhaka, Bangladesh / <span id="clock">23:00 BST</span>
         </div>
       </div>
 
@@ -1863,7 +1749,7 @@ button { cursor: pointer; }
 
   <!-- Archive Floating Thumbnail Preview -->
   <div class="archive-preview">
-    <img src="" alt="Archive preview">
+    <img src="" alt="Archive preview" loading="lazy" width="280" height="360">
   </div>
 
   <!-- Free Audit Modal -->
@@ -1907,46 +1793,6 @@ button { cursor: pointer; }
     </div>
   </div>
 
-  <!-- Floating AI Assistant Chat Button & Box -->
-  <button class="chat-trigger-btn" id="chat-btn" aria-label="Open AI Assistant Chat">
-    <span class="material-symbols-outlined">smart_toy</span>
-  </button>
-
-  <div class="chat-popup" id="chat-popup">
-    <div class="chat-header">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <img src="/logo.png" alt="SETU Logo" style="width:24px; height:24px; border-radius:4px; background:#fff; object-fit:contain;"/>
-        <div>
-          <div style="font-size:13px; font-weight:700;">SETU Ops Assistant</div>
-          <div style="font-size:10px; color:var(--accent-secondary); text-transform:uppercase; letter-spacing:.1em;">Live • AI Agent</div>
-        </div>
-      </div>
-      <button id="chat-close" style="background:none; border:0; color:#888; cursor:pointer;">
-        <span class="material-symbols-outlined" style="font-size:18px;">close</span>
-      </button>
-    </div>
-
-    <div class="chat-messages" id="chat-messages">
-      <div class="chat-msg bot">
-        Hello! I'm the SETU Ops Virtual Assistant. How can we help automate your business processes today?
-      </div>
-    </div>
-
-    <!-- Quick Prompt Chips -->
-    <div class="chat-chips">
-      <button type="button" class="chat-chip" data-msg="How does inventory sync work?">Inventory Sync</button>
-      <button type="button" class="chat-chip" data-msg="What are your pricing plans?">Pricing</button>
-      <button type="button" class="chat-chip" data-msg="Can I get a free workflow audit?">Free Audit</button>
-    </div>
-
-    <form class="chat-form" id="chat-form">
-      <input type="text" id="chat-input" placeholder="Type a message..." required="">
-      <button type="submit" aria-label="Send">
-        <span class="material-symbols-outlined" style="font-size:16px;">send</span>
-      </button>
-    </form>
-  </div>
-
   <!-- CDN Libraries: GSAP, ScrollTrigger, Lenis -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -1956,7 +1802,6 @@ button { cursor: pointer; }
     // ── Global Session & Webhook URLs ───────────────────────────────────────────
     const sessionId = 'session_' + Math.random().toString(36).slice(2);
     const N8N_AUDIT_URL = 'https://setuops.app.n8n.cloud/webhook/audit';
-    const N8N_CHAT_URL  = 'https://setuops.app.n8n.cloud/webhook/572b2569-4df6-45fd-a711-a1f9e24b8599/chat';
 
     // ── Preloader & Libraries Guard ─────────────────────────────────────────────
     document.body.classList.remove('is-loading');
@@ -1981,7 +1826,7 @@ button { cursor: pointer; }
     // Lenis Smooth Scroll
     const lenis = (!hasGSAP || !hasScrollTrigger || !hasLenis || reduceMotion || isMobile)
       ? null
-      : new Lenis({ duration: 1.15, smoothWheel: true, wheelMultiplier: .9 });
+      : new Lenis({ duration: 1.1, smoothWheel: true, wheelMultiplier: .9 });
 
     if (lenis) {
       lenis.on('scroll', ScrollTrigger.update);
@@ -1996,7 +1841,7 @@ button { cursor: pointer; }
       const obj = { v: 0 };
       gsap.to(obj, {
         v: target,
-        duration: 1.6,
+        duration: 1.5,
         ease: 'power3.out',
         onUpdate: () => {
           const value = Number.isInteger(target) ? Math.round(obj.v) : obj.v.toFixed(1);
@@ -2009,19 +1854,19 @@ button { cursor: pointer; }
     function initAnimations() {
       // Preloader exit
       gsap.timeline()
-        .to('.preloader span', { y: -20, opacity: 0, duration: .5, ease:'power3.in' })
-        .to('.preloader', { yPercent: -100, duration: .8, ease:'power4.inOut', onComplete:()=>document.body.classList.remove('is-loading') }, '-=.1')
-        .from('.site-header', { y:-30, opacity:0, duration:.8, ease:'power3.out' }, '-=.35')
-        .from('.hero-topcopy .line-mask span', { yPercent:110, duration:.9, ease:'power4.out' }, '-=.6')
-        .from('.hero-link', { y:15, opacity:0, duration:.6 }, '-=.45')
-        .from('.hero-word .line-mask span, .hero-word > span', { yPercent:110, duration:1, ease:'power4.out' }, '-=.8');
+        .to('.preloader span', { y: -20, opacity: 0, duration: .45, ease:'power3.in' })
+        .to('.preloader', { yPercent: -100, duration: .75, ease:'power4.inOut', onComplete:()=>document.body.classList.remove('is-loading') }, '-=.1')
+        .from('.site-header', { y:-30, opacity:0, duration:.7, ease:'power3.out' }, '-=.3')
+        .from('.hero-topcopy .line-mask span', { yPercent:110, duration:.85, ease:'power4.out' }, '-=.5')
+        .from('.hero-link', { y:15, opacity:0, duration:.55 }, '-=.4')
+        .from('.hero-word .line-mask span, .hero-word > span', { yPercent:110, duration:1, ease:'power4.out' }, '-=.7');
 
       // Universal Reveal Triggers
       gsap.utils.toArray('.intro-title .line-mask span').forEach((line, i) => {
-        gsap.from(line, { yPercent:110, duration:1, ease:'power4.out', scrollTrigger:{ trigger:line, start:'top 90%' }, delay:i*.05 });
+        gsap.from(line, { yPercent:110, duration:.9, ease:'power4.out', scrollTrigger:{ trigger:line, start:'top 90%' }, delay:i*.04 });
       });
-      gsap.from('.intro-portrait', { clipPath:'inset(100% 0 0 0)', duration:1.1, ease:'power4.out', scrollTrigger:{ trigger:'.intro-portrait', start:'top 85%' } });
-      gsap.from('.keywords, .intro-copy, .stats-mini', { y:30, opacity:0, stagger:.1, duration:.8, scrollTrigger:{ trigger:'.intro-lower', start:'top 82%' } });
+      gsap.from('.intro-portrait', { clipPath:'inset(100% 0 0 0)', duration:1, ease:'power4.out', scrollTrigger:{ trigger:'.intro-portrait', start:'top 85%' } });
+      gsap.from('.keywords, .intro-copy, .stats-mini', { y:25, opacity:0, stagger:.08, duration:.7, scrollTrigger:{ trigger:'.intro-lower', start:'top 82%' } });
 
       document.querySelectorAll('[data-count]').forEach(el => ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>animateCounter(el) }));
 
@@ -2030,7 +1875,7 @@ button { cursor: pointer; }
       // MatchMedia for Desktop Parallax vs Mobile Clean Flow
       ScrollTrigger.matchMedia({
         "(min-width: 901px)": function() {
-          gsap.to('.hero-media img', { scale:1, duration:1.8, ease:'power3.out' });
+          gsap.to('.hero-media img', { scale:1, duration:1.6, ease:'power3.out' });
           gsap.to('.hero-media', { yPercent:18, scale:.96, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
           gsap.to('.hero-word', { yPercent:30, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
 
@@ -2041,8 +1886,8 @@ button { cursor: pointer; }
             const side = project.querySelector('.project-side');
             if (media) gsap.fromTo(media, { scale:.88 }, { scale:1.02, ease:'none', scrollTrigger:{ trigger:project, start:'top bottom', end:'bottom top', scrub:true } });
             if (img) gsap.fromTo(img, { yPercent:-5, scale:1.06 }, { yPercent:5, scale:1, ease:'none', scrollTrigger:{ trigger:project, start:'top bottom', end:'bottom top', scrub:true } });
-            if (title) gsap.from(title, { yPercent:110, duration:1, ease:'power4.out', scrollTrigger:{ trigger:project, start:'top 72%' } });
-            if (side) gsap.from(side, { x:30, opacity:0, duration:.8, scrollTrigger:{ trigger:project, start:'top 68%' } });
+            if (title) gsap.from(title, { yPercent:110, duration:.9, ease:'power4.out', scrollTrigger:{ trigger:project, start:'top 72%' } });
+            if (side) gsap.from(side, { x:30, opacity:0, duration:.7, scrollTrigger:{ trigger:project, start:'top 68%' } });
           });
 
           const capWords = gsap.utils.toArray('.cap-statement span');
@@ -2054,18 +1899,17 @@ button { cursor: pointer; }
           gsap.from('.cinematic-card', { y:200, opacity:0, rotate:4, ease:'none', scrollTrigger:{ trigger:'.cinematic', start:'top 70%', end:'center center', scrub:true } });
         },
         "(max-width: 900px)": function() {
-          // Mobile clean reveal without pinning
-          gsap.utils.toArray('.cap-statement span').forEach(w => gsap.to(w, { color:'#fff', duration:.8, scrollTrigger:{ trigger:w, start:'top 85%' } }));
+          gsap.utils.toArray('.cap-statement span').forEach(w => gsap.to(w, { color:'#fff', duration:.7, scrollTrigger:{ trigger:w, start:'top 85%' } }));
           document.querySelectorAll('.project').forEach(project => {
-            gsap.from(project, { y:40, opacity:0, duration:.8, scrollTrigger:{ trigger:project, start:'top 85%' } });
+            gsap.from(project, { y:35, opacity:0, duration:.7, scrollTrigger:{ trigger:project, start:'top 85%' } });
           });
         }
       });
 
-      gsap.from('.section-title', { yPercent:100, opacity:0, duration:1, scrollTrigger:{ trigger:'.engagement', start:'top 78%' } });
-      gsap.from('.plan', { y:60, opacity:0, stagger:.12, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'.plans', start:'top 80%' } });
-      gsap.from('.quote', { y:50, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:'.testimonial', start:'top 75%' } });
-      gsap.from('.footer-word', { yPercent:70, duration:1.2, ease:'power4.out', scrollTrigger:{ trigger:'.footer', start:'top 40%' } });
+      gsap.from('.section-title', { yPercent:100, opacity:0, duration:.9, scrollTrigger:{ trigger:'.engagement', start:'top 78%' } });
+      gsap.from('.plan', { y:50, opacity:0, stagger:.1, duration:.8, ease:'power3.out', scrollTrigger:{ trigger:'.plans', start:'top 80%' } });
+      gsap.from('.quote', { y:45, opacity:0, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'.testimonial', start:'top 75%' } });
+      gsap.from('.footer-word', { yPercent:70, duration:1.1, ease:'power4.out', scrollTrigger:{ trigger:'.footer', start:'top 40%' } });
 
       ScrollTrigger.refresh();
     }
@@ -2121,12 +1965,12 @@ button { cursor: pointer; }
         document.querySelectorAll('.faq-item').forEach(other=>{
           if(other!==item){
             other.classList.remove('open');
-            if (hasGSAP) gsap.to(other.querySelector('.faq-a'),{height:0,duration:.4,ease:'power2.inOut'});
+            if (hasGSAP) gsap.to(other.querySelector('.faq-a'),{height:0,duration:.35,ease:'power2.inOut'});
             else other.querySelector('.faq-a').style.height = '0px';
           }
         });
         const open = item.classList.toggle('open');
-        if (hasGSAP) gsap.to(a,{height:open?a.scrollHeight:0,duration:.45,ease:'power2.inOut'});
+        if (hasGSAP) gsap.to(a,{height:open?a.scrollHeight:0,duration:.4,ease:'power2.inOut'});
         else a.style.height = open ? a.scrollHeight + 'px' : '0px';
       });
     });
@@ -2262,85 +2106,6 @@ button { cursor: pointer; }
         await submitAuditPayload(payload, submitBtn, originalText, contactForm);
       });
     }
-
-    // ── Floating AI Chat Assistant ──────────────────────────────────────────────
-    const chatBtn      = document.getElementById('chat-btn');
-    const chatPopup    = document.getElementById('chat-popup');
-    const chatClose    = document.getElementById('chat-close');
-    const chatForm     = document.getElementById('chat-form');
-    const chatInput    = document.getElementById('chat-input');
-    const chatMessages = document.getElementById('chat-messages');
-    let chatOpen = false;
-
-    chatBtn.addEventListener('click', () => {
-      chatOpen = !chatOpen;
-      chatPopup.style.display = chatOpen ? 'flex' : 'none';
-      if (chatOpen) chatInput.focus();
-    });
-
-    chatClose.addEventListener('click', () => {
-      chatOpen = false;
-      chatPopup.style.display = 'none';
-    });
-
-    // Quick prompt chip click
-    document.querySelectorAll('.chat-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        const msg = chip.dataset.msg;
-        chatInput.value = msg;
-        chatForm.dispatchEvent(new Event('submit'));
-      });
-    });
-
-    function addChatMessage(text, isUser) {
-      const div = document.createElement('div');
-      div.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
-      div.textContent = text;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    chatForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      const msg = chatInput.value.trim();
-      if (!msg) return;
-      addChatMessage(msg, true);
-      chatInput.value = '';
-      chatInput.disabled = true;
-
-      // Typing indicator
-      const typing = document.createElement('div');
-      typing.className = 'chat-msg bot';
-      typing.id = 'chat-typing';
-      typing.textContent = 'Thinking...';
-      chatMessages.appendChild(typing);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      try {
-        const res = await fetch(N8N_CHAT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chatInput: msg, sessionId })
-        });
-        const typingEl = document.getElementById('chat-typing');
-        if (typingEl) typingEl.remove();
-
-        if (res.ok) {
-          const data = await res.json();
-          const reply = data.output || data.text || data.message || data.response || (typeof data === 'string' ? data : JSON.stringify(data));
-          addChatMessage(reply, false);
-        } else {
-          addChatMessage("Sorry, I'm having trouble connecting to the brain server. Please try again shortly.", false);
-        }
-      } catch (err) {
-        const typingEl = document.getElementById('chat-typing');
-        if (typingEl) typingEl.remove();
-        addChatMessage("Connection error. Please check your internet connection.", false);
-      } finally {
-        chatInput.disabled = false;
-        chatInput.focus();
-      }
-    });
 
     // Smooth scroll for in-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
