@@ -492,6 +492,78 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
   .metric { min-height: 200px; padding: 22px; }
 }
 
+/* Mobile Hamburger Button */
+.mobile-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  align-items: center;
+  cursor: pointer;
+  transition: background .25s;
+}
+.mobile-hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: #fff;
+  transition: transform .3s, opacity .3s;
+}
+.mobile-hamburger.open span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.mobile-hamburger.open span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* Floating Mobile Nav Drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 78px;
+  left: var(--pad);
+  right: var(--pad);
+  background: rgba(14, 14, 14, 0.96);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 24px;
+  z-index: 980;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.7);
+}
+.mobile-nav-drawer.open { display: flex; }
+.mobile-nav-drawer a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.mobile-nav-drawer .header-cta {
+  margin-top: 10px;
+  text-align: center;
+  padding: 12px;
+  font-size: 11px;
+}
+
+/* Project Tag Badges */
+.project-tag {
+  display: inline-block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
 /* Modal & Floating AI Chat */
 .audit-modal-backdrop {
   position: fixed;
@@ -543,9 +615,9 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
   align-items: center;
   justify-content: center;
   box-shadow: 0 10px 30px rgba(13,166,242,.4);
-  transition: transform .3s;
+  transition: transform .3s, box-shadow .3s;
 }
-.chat-trigger-btn:hover { transform: scale(1.08); }
+.chat-trigger-btn:hover { transform: scale(1.08); box-shadow: 0 15px 40px rgba(13,166,242,.6); }
 .chat-popup {
   position: fixed;
   bottom: 100px;
@@ -583,9 +655,13 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
   border-radius: 12px;
   font-size: 13px;
   line-height: 1.45;
-  max-width: 85%;
+  max-width: 88%;
+  word-break: break-word;
 }
 .chat-msg.bot { background: rgba(255,255,255,.08); color: #ddd; align-self: flex-start; }
+.chat-msg.bot b { color: #fff; }
+.chat-msg.bot ul { margin: 6px 0 0 16px; padding: 0; }
+.chat-msg.bot li { margin-bottom: 4px; }
 .chat-msg.user { background: var(--accent); color: #fff; align-self: flex-end; }
 .chat-chips { display: flex; gap: 6px; padding: 0 16px 10px; overflow-x: auto; }
 .chat-chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: #ccc; border-radius: 999px; padding: 4px 10px; font-size: 10px; white-space: nowrap; cursor: pointer; transition: all .2s; }
@@ -633,8 +709,24 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
       <a href="#engagement">Engagement</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="header-cta audit-trigger">Get Free Audit ↗</button>
+    <div style="justify-self:end; display:flex; align-items:center; gap:8px;">
+      <button class="header-cta audit-trigger">Get Free Audit ↗</button>
+      <button class="mobile-hamburger" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="#work" class="drawer-link">Work</a>
+    <a href="#studio" class="drawer-link">Studio</a>
+    <a href="#capabilities" class="drawer-link">Capabilities</a>
+    <a href="#engagement" class="drawer-link">Engagement</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <button class="header-cta audit-trigger drawer-link">Get Free Audit ↗</button>
+  </div>
 
   <main id="top">
     <!-- Hero Section -->
@@ -751,8 +843,9 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
           <div class="eyebrow">2024—2026 DEPLOYMENTS</div>
         </div>
 
-        <article class="project">
+        <article class="project" data-service="Inventory & ERP Sync" style="cursor:pointer;">
           <div class="project-copy">
+            <span class="project-tag">[ REAL-TIME SYNC ]</span>
             <h3 class="display line-mask"><span>Inventory Sync</span></h3>
             <p>
               Logistics &amp; E-Commerce
@@ -771,8 +864,9 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
           </div>
         </article>
 
-        <article class="project">
+        <article class="project" data-service="AI Chatbot & Lead Automation" style="cursor:pointer;">
           <div class="project-copy">
+            <span class="project-tag">[ CONVERSATIONAL AI ]</span>
             <h3 class="display line-mask"><span>AI Lead Qualifier</span></h3>
             <p>
               WhatsApp &amp; Web Bot
@@ -791,8 +885,9 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
           </div>
         </article>
 
-        <article class="project">
+        <article class="project" data-service="Workflow & API Integration" style="cursor:pointer;">
           <div class="project-copy">
+            <span class="project-tag">[ DISPATCH PIPELINE ]</span>
             <h3 class="display line-mask"><span>Fulfillment Pipeline</span></h3>
             <p>
               Order &amp; Courier Dispatch
@@ -811,8 +906,9 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
           </div>
         </article>
 
-        <article class="project">
+        <article class="project" data-service="Full Enterprise AI Ops" style="cursor:pointer;">
           <div class="project-copy">
+            <span class="project-tag">[ FINTECH AUTOMATION ]</span>
             <h3 class="display line-mask"><span>Reconciliation AI</span></h3>
             <p>
               ERP &amp; Banking Pipeline
@@ -1523,7 +1619,23 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
       setTimeout(() => { toast.style.transform = 'translateX(200%)'; }, 3500);
     }
 
-    // Modal
+    // ── Mobile Navigation Drawer ──
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    if (navToggle && mobileDrawer) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+      });
+      document.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          navToggle.classList.remove('open');
+        });
+      });
+    }
+
+    // ── Audit & Inquiry Modal ──
     const auditModal = document.getElementById('audit-modal');
     const auditClose = document.getElementById('audit-close');
     const auditForm  = document.getElementById('audit-form');
@@ -1531,6 +1643,20 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
     document.querySelectorAll('.audit-trigger').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
+        auditModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Make project cards trigger the modal with prefilled service context
+    document.querySelectorAll('.project').forEach(project => {
+      project.addEventListener('click', (e) => {
+        const service = project.dataset.service;
+        if (service) {
+          const compInput = auditModal.querySelector('input[name="company"]');
+          if (compInput) compInput.value = service;
+        }
         auditModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       });
@@ -1606,7 +1732,7 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
       });
     }
 
-    // AI Chat
+    // ── AI Chat Assistant with Markdown Parsing ──
     const chatBtn      = document.getElementById('chat-btn');
     const chatPopup    = document.getElementById('chat-popup');
     const chatClose    = document.getElementById('chat-close');
@@ -1633,10 +1759,26 @@ body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:
       });
     });
 
+    function formatMarkdown(text) {
+      if (!text) return '';
+      let safe = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      safe = safe.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      safe = safe.replace(/(?:^|\n)[-*•]\s+(.+)/g, '<li>$1</li>');
+      if (safe.includes('<li>')) {
+        safe = safe.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+      }
+      safe = safe.replace(/\n/g, '<br>');
+      return safe;
+    }
+
     function addChatMessage(text, isUser) {
       const div = document.createElement('div');
       div.className = 'chat-msg ' + (isUser ? 'user' : 'bot');
-      div.textContent = text;
+      if (isUser) {
+        div.textContent = text;
+      } else {
+        div.innerHTML = formatMarkdown(text);
+      }
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
