@@ -180,78 +180,81 @@ button { cursor: pointer; }
 .cross:before { width: 14px; height: 1px; }
 .cross:after { width: 1px; height: 14px; }
 
-/* ── RESPONSIVE FLOATING PILL HEADER ── */
+/* ── EXACT 3-COLUMN FLOATING PILL NAVBAR (MATCHING GENERATED-PAGE.HTML) ── */
 .site-header {
   position: fixed;
   z-index: 990;
   top: 14px;
   left: var(--pad);
   right: var(--pad);
-  height: 56px;
-  padding: 0 16px;
-  display: flex;
-  justify-content: space-between;
+  height: 58px;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   color: #fff;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  background: rgba(12, 12, 12, 0.92);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(12, 12, 12, 0.82);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  max-width: calc(var(--max) - var(--pad)*2);
+  max-width: calc(var(--max) - var(--pad) * 2);
   margin: auto;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  transition: background .3s, border-color .3s, transform .3s;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  transition: background-color 0.35s, backdrop-filter 0.35s, -webkit-backdrop-filter 0.35s, border-color 0.35s, box-shadow 0.35s, height 0.35s;
+}
+.site-header a, .site-header button {
+  pointer-events: auto;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
   font-weight: 800;
-  letter-spacing: -.03em;
-  font-size: 16px;
+  letter-spacing: -.04em;
+  font-size: 18px;
   color: #fff;
-  flex-shrink: 0;
 }
 .logo img {
   width: 28px;
   height: 28px;
   border-radius: 6px;
   background: #fff;
-  object-fit: contain;
   padding: 2px;
+  margin-right: 8px;
+  object-fit: contain;
 }
 .logo b { font-weight: 800; }
-.logo i { color: var(--accent); font-style: normal; }
+.logo i { color: var(--accent); opacity: .75; font-style: normal; padding: 0 3px; }
 
 .nav {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.25);
 }
 .nav a {
-  padding: 6px 14px;
+  padding: 8px 14px;
   border-radius: 999px;
-  color: #eee;
+  color: #fff;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .06em;
-  transition: all .25s;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  transition: .25s;
 }
-.nav a:hover { background: #fff; color: #111; }
+.nav a:hover {
+  background: #fff;
+  color: #111;
+}
 
 .header-right {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0;
 }
 
 .header-cta {
@@ -259,15 +262,19 @@ button { cursor: pointer; }
   background: #fff;
   color: #111;
   border: 0;
-  padding: 9px 18px;
+  padding: 11px 18px;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  transition: all .25s;
+  transition: .25s;
   white-space: nowrap;
 }
-.header-cta:hover { transform: translateY(-2px); background: var(--acid); color: #111; }
+.header-cta:hover {
+  transform: translateY(-2px);
+  background: var(--acid);
+  color: #111;
+}
 
 /* Mobile Menu Hamburger */
 .hamburger {
@@ -1067,6 +1074,12 @@ button { cursor: pointer; }
 
 /* Tablet & Smaller (<= 992px) */
 @media (max-width: 992px) {
+  .site-header {
+    left: 12px;
+    right: 12px;
+    grid-template-columns: 1fr auto;
+    padding: 0 14px;
+  }
   .nav { display: none; }
   .hamburger { display: flex; }
   
