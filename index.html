@@ -347,17 +347,33 @@ button { cursor: pointer; }
   flex-direction: column;
   justify-content: flex-end;
 }
-.hero-media { position: absolute; inset: 0; }
+.hero-media { position: absolute; inset: 0; overflow: hidden; pointer-events: none; width: 100%; height: 100%; }
 .hero-media:after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.25) 45%, rgba(0,0,0,.92));
+  pointer-events: none;
 }
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.unicorn-embed,
+[data-us-project] {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+.unicorn-embed canvas,
+[data-us-project] canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: none;
 }
 .hero-topcopy {
   position: absolute;
@@ -1153,7 +1169,7 @@ button { cursor: pointer; }
     <!-- Hero Section -->
     <section class="hero section">
       <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=2000&amp;q=85" alt="SETU Ops AI Automation & SaaS" fetchpriority="high" width="2000" height="1100" />
+        <div data-us-project="VaqT3bxlc2sugR8faApF" class="unicorn-embed"></div>
       </div>
       
       <div class="hero-topcopy">
@@ -1863,10 +1879,13 @@ button { cursor: pointer; }
     </div>
   </div>
 
-  <!-- CDN Libraries: GSAP, ScrollTrigger, Lenis -->
+  <!-- CDN Libraries: GSAP, ScrollTrigger, Lenis, Unicorn Studio -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+    (function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",i.async=!0,i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head||document.body).appendChild(i)}})();
+  </script>
 
   <script>
     // ── Global Session & Webhook URLs ───────────────────────────────────────────
@@ -1925,7 +1944,11 @@ button { cursor: pointer; }
       // Preloader exit
       gsap.timeline()
         .to('.preloader span', { y: -20, opacity: 0, duration: .45, ease:'power3.in' })
-        .to('.preloader', { yPercent: -100, duration: .75, ease:'power4.inOut', onComplete:()=>document.body.classList.remove('is-loading') }, '-=.1')
+        .to('.preloader', { yPercent: -100, duration: .75, ease:'power4.inOut', onComplete:()=>{
+          document.body.classList.remove('is-loading');
+          window.dispatchEvent(new Event('resize'));
+          if (window.ScrollTrigger) ScrollTrigger.refresh();
+        }}, '-=.1')
         .from('.site-header', { y:-30, opacity:0, duration:.7, ease:'power3.out' }, '-=.3')
         .from('.hero-topcopy .line-mask span', { yPercent:110, duration:.85, ease:'power4.out' }, '-=.5')
         .from('.hero-link', { y:15, opacity:0, duration:.55 }, '-=.4')
@@ -1946,7 +1969,7 @@ button { cursor: pointer; }
       ScrollTrigger.matchMedia({
         "(min-width: 901px)": function() {
           gsap.to('.hero-media img', { scale:1, duration:1.6, ease:'power3.out' });
-          gsap.to('.hero-media', { yPercent:18, scale:.96, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
+          gsap.to('.hero-media', { yPercent:15, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
           gsap.to('.hero-word', { yPercent:30, ease:'none', scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
 
           document.querySelectorAll('.project').forEach((project) => {
@@ -1986,6 +2009,7 @@ button { cursor: pointer; }
 
     window.addEventListener('load', () => {
       document.body.classList.remove('is-loading');
+      window.dispatchEvent(new Event('resize'));
       if (hasGSAP && hasScrollTrigger) initAnimations();
       else if (preloader) preloader.remove();
     });
