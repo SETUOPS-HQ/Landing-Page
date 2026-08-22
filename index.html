@@ -610,9 +610,14 @@ button { cursor: pointer; }
   background: #051021;
   color: #fff;
 }
-.cap-intro { padding: clamp(40px, 8vh, 90px) 0; display: flex; align-items: center; }
-.cap-statement { font-size: clamp(28px, 5vw, 84px); max-width: 1300px; line-height: 1.1; }
-.cap-statement span { display: block; color: #475e7d; transition: color .25s linear; }
+.cap-intro {
+  min-height: clamp(340px, 55vh, 520px);
+  padding: 60px 0 clamp(40px, 6vh, 80px);
+  display: flex;
+  align-items: center;
+}
+.cap-statement { font-size: clamp(26px, 4.6vw, 76px); max-width: 1300px; line-height: 1.15; }
+.cap-statement span { display: block; color: #314663; transition: color .25s linear; }
 .cap-statement span:nth-child(2) { padding-left: 4vw; }
 .cap-statement span:nth-child(3) { padding-left: 8vw; }
 .cap-statement span.active { color: #fff; }
@@ -2068,9 +2073,8 @@ button { cursor: pointer; }
           });
 
           const capWords = gsap.utils.toArray('.cap-statement span');
-          const capTL = gsap.timeline({ scrollTrigger:{ trigger:'.cap-intro', start:'top top', end:'+=130%', pin:true, scrub:true } });
-          capWords.forEach((w, i) => capTL.to(w, { color:'#fff', duration:1 }, i));
-          capTL.to('.cap-statement', { y:-30, duration:1 }, 0);
+          const capTL = gsap.timeline({ scrollTrigger:{ trigger:'.cap-intro', start:'center center', end:'+=90%', pin:true, scrub:0.6 } });
+          capWords.forEach((w, i) => capTL.to(w, { color:'#fff', duration:1 }, i * 0.7));
 
           gsap.fromTo('.cinematic-bg img', { scale:1.12 }, { scale:1, ease:'none', scrollTrigger:{ trigger:'.cinematic', start:'top top', end:'bottom top', scrub:true } });
           gsap.from('.cinematic-card', { y:200, opacity:0, rotate:4, ease:'none', scrollTrigger:{ trigger:'.cinematic', start:'top 70%', end:'center center', scrub:true } });
