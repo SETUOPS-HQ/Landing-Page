@@ -886,39 +886,6 @@ button { cursor: pointer; }
 .stat strong { display: block; font-family: "Space Grotesk"; font-size: clamp(52px, 8vw, 130px); letter-spacing: -.06em; line-height: .85; }
 .stat p { margin: 20px 0 0; max-width: 300px; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; line-height: 1.6; }
 
-/* ── JOURNAL / USE CASE GUIDES ── */
-.journal { padding: clamp(80px, 12vw, 160px) 0; }
-.journal-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-.journal-item {
-  position: relative;
-  background: #111;
-  color: #fff;
-  min-height: 380px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-radius: 6px;
-}
-.journal-item:nth-child(1) { grid-column: 1 / 6; }
-.journal-item:nth-child(2) { grid-column: 6 / 13; margin-top: 60px; }
-.journal-item:nth-child(3) { grid-column: 1 / 8; }
-.journal-item:nth-child(4) { grid-column: 8 / 13; margin-top: -60px; }
-.journal-img { position: absolute; inset: 0; opacity: .4; filter: grayscale(1); transition: opacity .4s, transform .4s; }
-.journal-item:hover .journal-img { opacity: .8; filter: grayscale(0); transform: scale(1.03); }
-.journal-meta { position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,.35); padding-top: 12px; display: flex; justify-content: space-between; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
-.journal-item:before {
-  content: "Guide /";
-  position: relative;
-  z-index: 2;
-  font-family: "Space Grotesk";
-  font-size: clamp(38px, 4.5vw, 76px);
-  letter-spacing: -.05em;
-  line-height: .95;
-  margin-bottom: auto;
-}
-
 /* ── FAQ ACCORDION ── */
 .faq { padding: clamp(80px, 12vw, 160px) 0; }
 .faq h2 { font-size: clamp(34px, 5.5vw, 84px); margin: 0 0 clamp(30px, 5vh, 60px); }
@@ -1108,9 +1075,6 @@ button { cursor: pointer; }
   .quote-author { border-top: none; padding-top: 0; margin-top: 0; }
   .quote-metrics { margin-top: 40px; }
   
-  .journal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .journal-item:nth-child(n) { grid-column: auto; margin-top: 0; }
-  
   .footer-main { grid-template-columns: 1fr; gap: 40px; }
 }
 
@@ -1169,9 +1133,6 @@ button { cursor: pointer; }
   
   .stats-grid { grid-template-columns: 1fr; }
   .stat { min-height: 200px; padding: 24px; }
-  
-  .journal-grid { grid-template-columns: 1fr; }
-  .journal-item { min-height: 300px; }
   
   .form-row { grid-template-columns: 1fr; }
   .footer-meta { flex-direction: column; gap: 14px; align-items: flex-start; }
@@ -1722,51 +1683,6 @@ button { cursor: pointer; }
         <div class="stat">
           <strong data-count="99.9" data-suffix="%">0</strong>
           <p>Reliable uptime for all client automation pipelines</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Journal / Helpful Guides -->
-    <section class="journal paper">
-      <div class="container">
-        <div class="eyebrow" style="margin-bottom: clamp(30px, 4vh, 60px);">04 / Practical Automation Guides</div>
-        <div class="journal-grid">
-          <article class="journal-item">
-            <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=600&amp;q=75&amp;fm=webp" alt="Multi-Store Stock Guide" loading="lazy" decoding="async" width="600" height="400">
-            </div>
-            <div class="journal-meta">
-              <span>01 / Why Manual Stock Sync Costs You Sales</span>
-              <span>Guide</span>
-            </div>
-          </article>
-          <article class="journal-item">
-            <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=600&amp;q=75&amp;fm=webp" alt="AI Chatbot Guide" loading="lazy" decoding="async" width="600" height="400">
-            </div>
-            <div class="journal-meta">
-              <span>02 / How to Reply to Customers in 5 Seconds 24/7</span>
-              <span>Guide</span>
-            </div>
-          </article>
-          <article class="journal-item">
-            <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=600&amp;q=75&amp;fm=webp" alt="Repetitive Tasks Guide" loading="lazy" decoding="async" width="600" height="400">
-            </div>
-            <div class="journal-meta">
-              <span>03 / 5 Daily Tasks Every Business Should Automate</span>
-              <span>Guide</span>
-            </div>
-          </article>
-          <article class="journal-item">
-            <div class="journal-img">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=600&amp;q=75&amp;fm=webp" alt="Courier Automation Guide" loading="lazy" decoding="async" width="600" height="400">
-            </div>
-            <div class="journal-meta">
-              <span>04 / Building an Investor-Ready MVP in Weeks</span>
-              <span>Guide</span>
-            </div>
-          </article>
         </div>
       </div>
     </section>
