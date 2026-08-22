@@ -66,11 +66,11 @@
     :root {
       --bg-base: #030712;
       --bg-surface: #0b1324;
-      --bg-card: rgba(15, 23, 42, 0.65);
-      --bg-card-hover: rgba(30, 41, 59, 0.7);
+      --bg-card: rgba(15, 23, 42, 0.7);
+      --bg-card-hover: rgba(26, 38, 66, 0.85);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(0, 229, 255, 0.3);
-      --border-accent: rgba(0, 142, 216, 0.35);
+      --border-glow: rgba(0, 229, 255, 0.35);
+      --border-accent: rgba(0, 142, 216, 0.4);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
@@ -93,6 +93,7 @@
       color: var(--text-main);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     body {
@@ -118,20 +119,26 @@
     .glow-1 {
       position: absolute;
       top: -150px;
-      left: 20%;
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(0, 229, 255, 0.07) 0%, rgba(0, 142, 216, 0.03) 45%, transparent 70%);
-      filter: blur(80px);
+      left: 15%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, rgba(0, 142, 216, 0.03) 50%, transparent 70%);
+      filter: blur(90px);
+      animation: floatSlow 12s ease-in-out infinite alternate;
     }
     .glow-2 {
       position: absolute;
-      top: 40%;
-      right: 15%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(12, 52, 103, 0.18) 0%, rgba(0, 229, 255, 0.04) 50%, transparent 70%);
-      filter: blur(90px);
+      top: 45%;
+      right: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(12, 52, 103, 0.25) 0%, rgba(0, 229, 255, 0.04) 55%, transparent 75%);
+      filter: blur(100px);
+      animation: floatSlow 16s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) scale(1); }
+      100% { transform: translateY(30px) scale(1.05); }
     }
 
     .container {
@@ -142,7 +149,7 @@
       z-index: 1;
     }
 
-    /* Typography Utilities */
+    /* Typography */
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
       letter-spacing: -0.03em;
@@ -155,16 +162,22 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--accent);
       background: rgba(0, 229, 255, 0.08);
-      border: 1px solid rgba(0, 229, 255, 0.2);
+      border: 1px solid rgba(0, 229, 255, 0.22);
       padding: 6px 14px;
       border-radius: 999px;
       margin-bottom: 16px;
+      backdrop-filter: blur(8px);
+    }
+    .section-eyebrow svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
     }
 
     .section-title {
@@ -195,16 +208,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       padding: 12px 24px;
       font-size: 14px;
       font-weight: 600;
       border-radius: 12px;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid transparent;
       white-space: nowrap;
+    }
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+    .btn:hover svg {
+      transform: translateX(2px);
     }
     .btn-primary {
       background: #ffffff;
@@ -240,7 +261,7 @@
       transform: translateY(-2px);
     }
 
-    /* Cards */
+    /* Cards & Glassmorphism */
     .glass-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -252,7 +273,8 @@
     .glass-card:hover {
       border-color: var(--border-accent);
       background: var(--bg-card-hover);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 229, 255, 0.08);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 229, 255, 0.1);
+      transform: translateY(-3px);
     }
 
     /* ── 01 / NAVBAR ── */
@@ -272,7 +294,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
-      background: rgba(8, 15, 29, 0.75);
+      background: rgba(8, 15, 29, 0.8);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       backdrop-filter: blur(20px);
@@ -332,7 +354,7 @@
       padding: 8px 12px;
       border-radius: 8px;
       color: #ffffff;
-      font-size: 18px;
+      cursor: pointer;
     }
 
     /* Mobile Drawer */
@@ -342,7 +364,7 @@
       top: 76px;
       left: 20px;
       right: 20px;
-      background: rgba(11, 19, 36, 0.95);
+      background: rgba(11, 19, 36, 0.96);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 24px;
@@ -445,11 +467,16 @@
       margin: 0 auto;
     }
     .hero-stat-card {
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 16px 20px;
       text-align: left;
+      transition: all 0.25s ease;
+    }
+    .hero-stat-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(26, 38, 66, 0.7);
     }
     .hero-stat-card .stat-num {
       font-size: 24px;
@@ -496,6 +523,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .spotlight-img-wrap:hover img {
+      transform: scale(1.03);
     }
     .spotlight-badge {
       position: absolute;
@@ -583,9 +614,21 @@
       border-color: var(--border-accent);
       transform: translateY(-4px);
     }
-    .result-item .icon {
-      font-size: 26px;
-      margin-bottom: 12px;
+    .result-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .result-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
     }
     .result-item h4 {
       font-size: 15px;
@@ -657,8 +700,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
+    }
+    .demo-feature-item .check-icon svg {
+      width: 12px;
+      height: 12px;
     }
 
     /* Chatbot Window Widget */
@@ -785,6 +830,9 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .chip-btn:hover {
       background: var(--accent-blue);
@@ -817,8 +865,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
       margin-bottom: 20px;
+    }
+    .service-icon-box svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
     }
     .service-card h3 {
       font-size: 19px;
@@ -846,11 +898,12 @@
       align-items: flex-start;
       gap: 8px;
     }
-    .service-deliverables li::before {
-      content: "✦";
+    .service-deliverables li svg {
+      width: 14px;
+      height: 14px;
       color: var(--accent);
-      font-size: 11px;
-      margin-top: 1px;
+      margin-top: 3px;
+      flex-shrink: 0;
     }
     .service-tags {
       display: flex;
@@ -1073,15 +1126,25 @@
       align-items: flex-start;
       gap: 10px;
     }
-    .plan-features li .chk {
+    .plan-features li svg {
+      width: 15px;
+      height: 15px;
       color: var(--accent);
-      font-weight: 700;
+      margin-top: 3px;
+      flex-shrink: 0;
     }
     .plan-delivery-time {
       font-size: 12px;
       font-weight: 600;
       color: var(--accent);
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .plan-delivery-time svg {
+      width: 14px;
+      height: 14px;
     }
 
     /* Trust & Guarantee Bar */
@@ -1100,8 +1163,21 @@
       gap: 14px;
       align-items: flex-start;
     }
-    .guarantee-item .g-icon {
-      font-size: 22px;
+    .guarantee-item .g-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .guarantee-item .g-icon-box svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
     }
     .guarantee-item h4 {
       font-size: 14px;
@@ -1161,6 +1237,26 @@
       min-height: 90px;
     }
 
+    .direct-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .direct-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+    .direct-info-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
     /* Modal */
     .modal-overlay {
       position: fixed;
@@ -1202,8 +1298,11 @@
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 24px;
+      font-size: 20px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .modal-close:hover {
       color: #ffffff;
@@ -1225,6 +1324,9 @@
       transform: translateY(120%);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 1100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .toast.show {
       transform: translateY(0);
@@ -1374,7 +1476,10 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="toast">Inquiry received! We will reach out shortly.</div>
+  <div id="toast" class="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastText">Inquiry received! We will reach out shortly.</span>
+  </div>
 
   <!-- ── 01 / FLOATING FROSTED NAVBAR ── -->
   <header class="site-header">
@@ -1394,8 +1499,13 @@
       </nav>
 
       <div class="nav-actions">
-        <button class="btn btn-primary audit-trigger">Book Free Audit ↗</button>
-        <button class="hamburger-btn" id="hamBtn" aria-label="Toggle navigation">☰</button>
+        <button class="btn btn-primary audit-trigger">
+          <span>Book Free Audit</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </button>
+        <button class="hamburger-btn" id="hamBtn" aria-label="Toggle navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -1408,7 +1518,10 @@
     <a href="#calculator" class="drawer-link">ROI Calculator</a>
     <a href="#process" class="drawer-link">Process</a>
     <a href="#pricing" class="drawer-link">Pricing</a>
-    <button class="btn btn-primary audit-trigger drawer-link" style="width: 100%; margin-top: 8px;">Book Free Audit ↗</button>
+    <button class="btn btn-primary audit-trigger drawer-link" style="width: 100%; margin-top: 8px;">
+      <span>Book Free Audit</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </button>
   </div>
 
   <main id="top">
@@ -1433,10 +1546,11 @@
           <div class="hero-ctas">
             <button class="btn btn-primary audit-trigger">
               <span>Book Free 15-Min Audit</span>
-              <span>↗</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </button>
             <a href="#demo" class="btn btn-outline">
-              <span>⚡ Try Live Bot Demo</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>Try Live Bot Demo</span>
             </a>
           </div>
 
@@ -1462,7 +1576,10 @@
     <section class="proof-section" id="case-study">
       <div class="container">
         <div class="section-header-center">
-          <div class="section-eyebrow">Proven In Production</div>
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <span>Proven In Production</span>
+          </div>
           <h2 class="section-title font-display">Real Results For Real Stores</h2>
           <p class="section-subtitle">See how we automated NinetyKits Jersey Shop to eliminate 4 hours of daily manual data entry.</p>
         </div>
@@ -1510,26 +1627,37 @@
         <!-- 4 Verified Results Cards -->
         <div class="results-grid">
           <div class="result-item">
-            <div class="icon">📦</div>
+            <div class="result-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
             <h4>Multi-Store Stock Sync</h4>
             <p>Daraz + Shopify + warehouse stock updates in <b>2 seconds</b>. Zero double-sold items.</p>
             <span class="tag">E-Commerce · Live</span>
           </div>
+
           <div class="result-item">
-            <div class="icon">🤖</div>
+            <div class="result-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+            </div>
             <h4>WhatsApp Sales Bot</h4>
             <p>Answers buyer questions in <b>3 seconds</b>, checks live inventory, and books orders <b>24/7</b>.</p>
             <span class="tag">Conversational AI</span>
           </div>
+
           <div class="result-item">
-            <div class="icon">🚚</div>
+            <div class="result-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
             <h4>1-Click Courier Dispatch</h4>
             <p>Generates invoices and books Pathao &amp; Steadfast consignments in <b>0 seconds</b>.</p>
             <span class="tag">Workflow Automation</span>
           </div>
+
           <div class="result-item">
-            <div class="icon">📊</div>
-            <h4>Nightly WhatsApp Reports</h4>
+            <div class="result-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <h4>Nightly Reports</h4>
             <p>Revenue, order count, and Bkash/Nagad reconciliation sent to WhatsApp at <b>9 PM daily</b>.</p>
             <span class="tag">Data Pipeline</span>
           </div>
@@ -1542,7 +1670,10 @@
       <div class="container">
         <div class="demo-layout">
           <div class="demo-left">
-            <div class="section-eyebrow">Interactive Sandbox</div>
+            <div class="section-eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              <span>Interactive Sandbox</span>
+            </div>
             <h2 class="font-display">Experience The Bot In Action</h2>
             <p>
               This is a live simulation of the WhatsApp customer bots we build. Test how your buyers get instant answers, check warehouse stock, and place orders in under 5 seconds.
@@ -1550,20 +1681,29 @@
 
             <div class="demo-features-list">
               <div class="demo-feature-item">
-                <span class="check-icon">✓</span>
+                <span class="check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
                 <span>Connects directly to your inventory database or Google Sheets</span>
               </div>
               <div class="demo-feature-item">
-                <span class="check-icon">✓</span>
+                <span class="check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
                 <span>Automatically books Steadfast &amp; Pathao courier consignments</span>
               </div>
               <div class="demo-feature-item">
-                <span class="check-icon">✓</span>
+                <span class="check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
                 <span>Runs 24/7 with zero human intervention required</span>
               </div>
             </div>
 
-            <button class="btn btn-accent audit-trigger">Get This Bot For Your Business ↗</button>
+            <button class="btn btn-accent audit-trigger">
+              <span>Get This Bot For Your Business</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </button>
           </div>
 
           <div class="demo-right">
@@ -1582,13 +1722,19 @@
               </div>
 
               <div class="chat-body-container" id="chatBody">
-                <div class="bubble bot">👋 Hi! Welcome to NinetyKits. How can I help you today?</div>
+                <div class="bubble bot">Hi! Welcome to NinetyKits. How can I help you today?</div>
               </div>
 
               <div class="chat-chips-area" id="chatChips">
-                <button class="chip-btn" data-flow="stock">Is the red jersey available in XL?</button>
-                <button class="chip-btn" data-flow="order">I want to place an order</button>
-                <button class="chip-btn" data-flow="track">Track order #4821</button>
+                <button class="chip-btn" data-flow="stock">
+                  <span>Check XL Jersey Stock</span>
+                </button>
+                <button class="chip-btn" data-flow="order">
+                  <span>Place a New Order</span>
+                </button>
+                <button class="chip-btn" data-flow="track">
+                  <span>Track Order #4821</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1600,7 +1746,10 @@
     <section class="services-section" id="services">
       <div class="container">
         <div class="section-header-center">
-          <div class="section-eyebrow">Engineering Capabilities</div>
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            <span>Engineering Capabilities</span>
+          </div>
           <h2 class="section-title font-display">What We Build For You</h2>
           <p class="section-subtitle">End-to-end automation pipelines and custom software engineered to eliminate manual bottlenecks.</p>
         </div>
@@ -1609,17 +1758,28 @@
           <!-- 01 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">💬</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
               <h3>WhatsApp &amp; Conversational AI</h3>
               <p>Autonomous AI customer agents that check stock, answer complex buyer questions, and close sales 24/7.</p>
               <ul class="service-deliverables">
-                <li>Multi-platform WhatsApp &amp; Messenger routing</li>
-                <li>Live database &amp; inventory lookups</li>
-                <li>Custom persona &amp; Bengali / English language support</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Multi-platform WhatsApp &amp; Messenger routing</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Live database &amp; inventory lookups</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Custom persona &amp; bilingual language support</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
-              <span>WhatsApp Cloud API</span>
+              <span>WhatsApp API</span>
               <span>FastAPI</span>
               <span>OpenAI</span>
             </div>
@@ -1628,13 +1788,24 @@
           <!-- 02 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">⚡</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
               <h3>Workflow &amp; Process Automation</h3>
               <p>Connect your fragmented apps so data moves automatically between Google Sheets, CRM, emails, and invoicing.</p>
               <ul class="service-deliverables">
-                <li>Multi-app webhook triggers &amp; listeners</li>
-                <li>Automatic PDF invoice &amp; receipt generation</li>
-                <li>Error-handling fallbacks &amp; retry queues</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Multi-app webhook triggers &amp; listeners</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Automatic PDF invoice &amp; receipt generation</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Error-handling fallbacks &amp; retry queues</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
@@ -1647,13 +1818,24 @@
           <!-- 03 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">🔄</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+              </div>
               <h3>Multi-Store Stock Sync</h3>
               <p>Real-time 2-way sync across Daraz, Shopify, WooCommerce, and warehouse inventory to prevent double-selling.</p>
               <ul class="service-deliverables">
-                <li>Daraz Open Platform API integration</li>
-                <li>Shopify &amp; WooCommerce inventory listeners</li>
-                <li>Under 3-second instant stock updates</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Daraz Open Platform API integration</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Shopify &amp; WooCommerce inventory listeners</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Under 3-second instant stock updates</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
@@ -1666,13 +1848,24 @@
           <!-- 04 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">🚚</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
               <h3>Courier &amp; Logistics Automation</h3>
               <p>Automate Pathao, Steadfast, and RedX consignment creation, address validation, and live customer SMS tracking.</p>
               <ul class="service-deliverables">
-                <li>1-click consignment booking</li>
-                <li>Automatic customer SMS with tracking URLs</li>
-                <li>Failed delivery &amp; return rate tracking</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>1-click consignment booking</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Automatic customer SMS with tracking URLs</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Failed delivery &amp; return rate tracking</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
@@ -1685,17 +1878,28 @@
           <!-- 05 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">🚀</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              </div>
               <h3>Custom SaaS MVP Development</h3>
               <p>From idea to deployed, production-ready SaaS product with clean architecture, auth, and database setup in weeks.</p>
               <ul class="service-deliverables">
-                <li>Full-stack responsive UI + API backend</li>
-                <li>Role-based authentication &amp; tenant security</li>
-                <li>Cloud deployment on AWS / DigitalOcean / Vercel</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Full-stack responsive UI + API backend</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Role-based authentication &amp; tenant security</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Cloud deployment on AWS / DigitalOcean</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
-              <span>React / Next.js</span>
+              <span>Next.js</span>
               <span>FastAPI</span>
               <span>PostgreSQL</span>
             </div>
@@ -1704,13 +1908,24 @@
           <!-- 06 -->
           <div class="glass-card service-card">
             <div>
-              <div class="service-icon-box">📊</div>
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+              </div>
               <h3>Live Dashboards &amp; Nightly Reports</h3>
               <p>Automated financial reconciliations, Bkash/Nagad verification, and KPI reports delivered directly to your phone.</p>
               <ul class="service-deliverables">
-                <li>Scheduled 9 PM WhatsApp summary reports</li>
-                <li>Real-time profit, margin &amp; return tracking</li>
-                <li>Payment gateway reconciliation alerts</li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Scheduled 9 PM WhatsApp summary reports</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Real-time profit, margin &amp; return tracking</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Payment gateway reconciliation alerts</span>
+                </li>
               </ul>
             </div>
             <div class="service-tags">
@@ -1727,7 +1942,10 @@
     <section class="calculator-section" id="calculator">
       <div class="container">
         <div class="section-header-center">
-          <div class="section-eyebrow">Interactive Estimator</div>
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+            <span>Interactive Estimator</span>
+          </div>
           <h2 class="section-title font-display">Calculate Your Time &amp; Cost Savings</h2>
           <p class="section-subtitle">Slide the controls to calculate how much manual work is costing your team every month.</p>
         </div>
@@ -1785,7 +2003,8 @@
             </div>
 
             <button class="btn btn-primary audit-trigger" style="width: 100%; margin-top: 16px;">
-              Claim These Savings ↗
+              <span>Claim These Savings</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </button>
           </div>
         </div>
@@ -1796,26 +2015,29 @@
     <section class="process-section" id="process">
       <div class="container">
         <div class="section-header-center">
-          <div class="section-eyebrow">Predictable Delivery</div>
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Predictable Delivery</span>
+          </div>
           <h2 class="section-title font-display">From Audit to Go-Live in Weeks</h2>
           <p class="section-subtitle">No endless meetings or confusing technical jargon. We follow a strict milestone-driven engineering roadmap.</p>
         </div>
 
         <div class="process-grid">
           <div class="glass-card process-step">
-            <span class="process-num">STEP 01</span>
+            <span class="process-num">PHASE 01</span>
             <h3>15-Min Audit &amp; Blueprint</h3>
             <p>We analyze your manual bottlenecks, map out your app ecosystem, and deliver a step-by-step automation architecture.</p>
           </div>
 
           <div class="glass-card process-step">
-            <span class="process-num">STEP 02</span>
+            <span class="process-num">PHASE 02</span>
             <h3>Build, Connect &amp; Test</h3>
             <p>We build your custom bot, API connections, and n8n workflows in staging environments with zero disruption to live operations.</p>
           </div>
 
           <div class="glass-card process-step">
-            <span class="process-num">STEP 03</span>
+            <span class="process-num">PHASE 03</span>
             <h3>Go-Live &amp; 30-Day Warranty</h3>
             <p>We deploy to production, train your team with step-by-step video guides, and provide 30 days of active tuning and warranty.</p>
           </div>
@@ -1827,7 +2049,10 @@
     <section class="pricing-section" id="pricing">
       <div class="container">
         <div class="section-header-center">
-          <div class="section-eyebrow">Clear &amp; Transparent</div>
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span>Clear &amp; Transparent</span>
+          </div>
           <h2 class="section-title font-display">Fixed Pricing. Guaranteed ROI.</h2>
           <p class="section-subtitle">Choose the engagement that fits your current operational scale. No hidden fees.</p>
         </div>
@@ -1842,19 +2067,37 @@
             <div class="plan-for">Best for store owners exploring what automation can do for them.</div>
 
             <ul class="plan-features">
-              <li><span class="chk">✓</span> Complete audit of manual workflows</li>
-              <li><span class="chk">✓</span> Identification of time &amp; cost bottlenecks</li>
-              <li><span class="chk">✓</span> Custom automation roadmap &amp; schema</li>
-              <li><span class="chk">✓</span> Exact time-savings &amp; ROI projection</li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Complete audit of manual workflows</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Identification of time &amp; cost bottlenecks</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom automation roadmap &amp; schema</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Exact time-savings &amp; ROI projection</span>
+              </li>
             </ul>
 
-            <div class="plan-delivery-time">⏱ Delivered in 3–5 business days</div>
-            <button class="btn btn-outline audit-trigger" style="width: 100%;">Book An Audit ↗</button>
+            <div class="plan-delivery-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Delivered in 3–5 business days</span>
+            </div>
+            <button class="btn btn-outline audit-trigger" style="width: 100%;">
+              <span>Book An Audit</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </button>
           </div>
 
           <!-- Tier 2 (Popular) -->
           <div class="glass-card pricing-card popular">
-            <div class="popular-tag">★ Most Popular</div>
+            <div class="popular-tag">Most Popular</div>
             <div class="plan-tier-name">02 / Full Build</div>
             <h3>Custom System Build</h3>
             <div class="plan-cost">$2,800</div>
@@ -1862,15 +2105,36 @@
             <div class="plan-for">Best for businesses ready to deploy a live AI bot, stock sync, or courier pipeline.</div>
 
             <ul class="plan-features">
-              <li><span class="chk">✓</span> Complete build of custom AI bot or workflow</li>
-              <li><span class="chk">✓</span> End-to-end multi-app connection &amp; sync</li>
-              <li><span class="chk">✓</span> FastAPI backend / n8n workflow pipeline</li>
-              <li><span class="chk">✓</span> Team training &amp; video walkthroughs</li>
-              <li><span class="chk">✓</span> 30 days of active support &amp; prompt tuning</li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Complete build of custom AI bot or workflow</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>End-to-end multi-app connection &amp; sync</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>FastAPI backend / n8n workflow pipeline</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Team training &amp; video walkthroughs</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>30 days of active support &amp; prompt tuning</span>
+              </li>
             </ul>
 
-            <div class="plan-delivery-time">⏱ Delivered in 2–3 weeks</div>
-            <button class="btn btn-primary audit-trigger" style="width: 100%;">Get Started ↗</button>
+            <div class="plan-delivery-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Delivered in 2–3 weeks</span>
+            </div>
+            <button class="btn btn-primary audit-trigger" style="width: 100%;">
+              <span>Get Started</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </button>
           </div>
 
           <!-- Tier 3 -->
@@ -1882,36 +2146,63 @@
             <div class="plan-for">Best for companies needing full SaaS MVPs, multiple bots, and dedicated support.</div>
 
             <ul class="plan-features">
-              <li><span class="chk">✓</span> Full SaaS MVP build or company-wide AI ops</li>
-              <li><span class="chk">✓</span> Multiple AI customer bots &amp; data pipelines</li>
-              <li><span class="chk">✓</span> Priority 24/7 monitoring &amp; SLA uptime</li>
-              <li><span class="chk">✓</span> Monthly optimization sprints &amp; new features</li>
-              <li><span class="chk">✓</span> Dedicated automation engineer on call</li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full SaaS MVP build or company-wide AI ops</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Multiple AI customer bots &amp; data pipelines</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Priority 24/7 monitoring &amp; SLA uptime</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Monthly optimization sprints &amp; new features</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated automation engineer on call</span>
+              </li>
             </ul>
 
-            <div class="plan-delivery-time">⏱ Ongoing Partnership · Starts in 1 week</div>
-            <button class="btn btn-outline audit-trigger" style="width: 100%;">Talk to Us ↗</button>
+            <div class="plan-delivery-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Ongoing Partnership · Starts in 1 week</span>
+            </div>
+            <button class="btn btn-outline audit-trigger" style="width: 100%;">
+              <span>Talk to Us</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </button>
           </div>
         </div>
 
         <!-- Guarantees Bar -->
         <div class="guarantee-bar">
           <div class="guarantee-item">
-            <div class="g-icon">🔒</div>
+            <div class="g-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
             <div>
               <h4>100% NDA Protected</h4>
               <p>Mutual NDAs signed before reviewing any proprietary code or business data.</p>
             </div>
           </div>
           <div class="guarantee-item">
-            <div class="g-icon">⚡</div>
+            <div class="g-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
             <div>
               <h4>Zero Downtime Deployment</h4>
               <p>Staged parallel testing ensures zero disruption to your daily live operations.</p>
             </div>
           </div>
           <div class="guarantee-item">
-            <div class="g-icon">🛠️</div>
+            <div class="g-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </div>
             <div>
               <h4>30-Day Post-Launch Warranty</h4>
               <p>Full bug fixes, prompt optimization, and technical support included post-launch.</p>
@@ -1926,23 +2217,26 @@
       <div class="container">
         <div class="contact-card">
           <div class="contact-left">
-            <div class="section-eyebrow">Direct Engineering Consultation</div>
+            <div class="section-eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Direct Consultation</span>
+            </div>
             <h2 class="section-title font-display">Ready To Eliminate Manual Headaches?</h2>
             <p class="section-subtitle" style="margin-bottom: 24px;">
               Fill in the form to get your free 15-minute automation audit. We'll identify your highest-ROI automation opportunities within 24 hours.
             </p>
 
-            <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 30px;">
-              <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 14px;">
-                <span>📍</span>
+            <div class="direct-info-list">
+              <div class="direct-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 <span>Dhaka, Bangladesh · Serving Global Clients</span>
               </div>
-              <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 14px;">
-                <span>📧</span>
+              <div class="direct-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 <span>hello@setuops.xyz</span>
               </div>
-              <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 14px;">
-                <span>💬</span>
+              <div class="direct-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 <span>WhatsApp: +880 1632 977787</span>
               </div>
             </div>
@@ -1976,7 +2270,8 @@
               </div>
 
               <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-                Submit Audit Request ↗
+                <span>Submit Audit Request</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
               </button>
             </form>
           </div>
@@ -2047,8 +2342,13 @@
   <!-- ── AUDIT MODAL ── -->
   <div class="modal-overlay" id="auditModal">
     <div class="modal-box">
-      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">✕</button>
-      <div class="section-eyebrow" style="margin-bottom: 12px;">Free 15-Min Audit</div>
+      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="section-eyebrow" style="margin-bottom: 12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Free 15-Min Audit</span>
+      </div>
       <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 8px;">Claim Your Automation Blueprint</h3>
       <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
         Leave your details and we'll analyze your current operations to find your biggest time-saving wins.
@@ -2072,7 +2372,8 @@
           <input type="text" name="company" class="form-input" placeholder="NinetyKits (or your brand)">
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-          Confirm Free Audit ↗
+          <span>Confirm Free Audit</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </button>
       </form>
     </div>
@@ -2088,8 +2389,9 @@
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
       if (!toast) return;
-      toast.textContent = msg;
+      if (toastText) toastText.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4500);
     }
@@ -2129,8 +2431,8 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
       }
     }
 
-    async function handleFormSubmit(payload, submitBtn, originalText, formElem, isModal = false) {
-      submitBtn.textContent = 'Securing Request...';
+    async function handleFormSubmit(payload, submitBtn, originalHtml, formElem, isModal = false) {
+      submitBtn.innerHTML = '<span>Securing Request...</span>';
       submitBtn.disabled = true;
 
       try {
@@ -2149,15 +2451,15 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
           localStorage.setItem('setuops_leads', JSON.stringify(leads));
         } catch(e) {}
 
-        showToast('✓ Request secured! Mahmudur will contact you via WhatsApp & Email.');
+        showToast('Request secured! Mahmudur will contact you via WhatsApp & Email.');
         if (formElem) formElem.reset();
         if (isModal) closeModal();
       } catch (err) {
-        showToast('✓ Request received! We will reach out shortly.');
+        showToast('Request received! We will reach out shortly.');
         if (formElem) formElem.reset();
         if (isModal) closeModal();
       } finally {
-        submitBtn.textContent = originalText;
+        submitBtn.innerHTML = originalHtml;
         submitBtn.disabled = false;
       }
     }
@@ -2168,7 +2470,7 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
       contactForm.addEventListener('submit', async e => {
         e.preventDefault();
         const btn = contactForm.querySelector('button[type="submit"]');
-        const orig = btn.textContent;
+        const orig = btn.innerHTML;
         const fd = new FormData(contactForm);
         const payload = {
           action: 'contact_form',
@@ -2189,7 +2491,7 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
       modalAuditForm.addEventListener('submit', async e => {
         e.preventDefault();
         const btn = modalAuditForm.querySelector('button[type="submit"]');
-        const orig = btn.textContent;
+        const orig = btn.innerHTML;
         const fd = new FormData(modalAuditForm);
         const payload = {
           action: 'audit_request',
@@ -2293,33 +2595,33 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
       const flows = {
         stock: [
           { type: 'user', text: 'Is the red jersey available in XL?' },
-          { type: 'bot', text: '🔍 Checking live warehouse inventory...', delay: 600 },
-          { type: 'bot', text: '✅ Yes! Red Jersey (XL) is in stock.\n\n📦 3 units left in warehouse\n💰 Price: ৳1,250\n🚚 Delivery: 2–3 days (Dhaka)\n\nShall I create your order?', delay: 1100 }
+          { type: 'bot', text: '[System] Checking live warehouse inventory...', delay: 600 },
+          { type: 'bot', text: '[Verified] Yes, Red Jersey (XL) is in stock.\n\n• Available: 3 units in warehouse\n• Price: ৳1,250 BDT\n• Delivery: 2–3 business days (Dhaka)\n\nWould you like me to book your order now?', delay: 1100 }
         ],
         order: [
           { type: 'user', text: 'I want to place an order' },
-          { type: 'bot', text: 'Awesome! 🎉 Setting up your consignment.\n\nPlease confirm:\n📱 Name: Rahim Ahmed\n📍 Delivery: Dhanmondi 27, Dhaka\n👕 Item: Red Jersey (XL) × 1\n💰 Total: ৳1,250 + ৳60 courier', delay: 900 },
-          { type: 'bot', text: '📦 Order #4821 Confirmed!\n✅ Steadfast consignment created\n🔗 Tracking: SFD-4821-BD\n📲 Confirmation SMS sent.\n\nThank you for shopping! 🙏', delay: 1700 }
+          { type: 'bot', text: 'Confirmed. Generating order consignment.\n\n• Customer: Rahim Ahmed\n• Address: Dhanmondi 27, Dhaka\n• Item: Red Jersey (XL) × 1\n• Total: ৳1,250 + ৳60 delivery', delay: 900 },
+          { type: 'bot', text: '[Order #4821 Confirmed]\n• Steadfast consignment created\n• Tracking ID: SFD-4821-BD\n• Confirmation SMS dispatched to customer phone.\n\nThank you for choosing NinetyKits.', delay: 1700 }
         ],
         track: [
           { type: 'user', text: 'Track order #4821' },
-          { type: 'bot', text: '📡 Fetching live Steadfast tracking...', delay: 600 },
-          { type: 'bot', text: '📦 Order #4821 Status:\n\n✅ Picked up from warehouse\n✅ Hub arrived: Tejgaon Hub\n⏳ Out for delivery: Today (ETA: 4 PM)\n\nCourier: Steadfast Express\n📞 Delivery Rider: 01712-XXXXXX', delay: 1300 }
+          { type: 'bot', text: '[System] Querying Steadfast live API...', delay: 600 },
+          { type: 'bot', text: '[Status: Order #4821]\n\n• Step 1: Picked up from warehouse [Done]\n• Step 2: In-Transit — Tejgaon Hub [Done]\n• Step 3: Out for Delivery (ETA: Today 4 PM)\n\n• Courier: Steadfast Express\n• Rider Contact: 01712-XXXXXX', delay: 1300 }
         ]
       };
 
       const nextOptions = {
         stock: [
-          { key: 'order', text: 'Yes, book it!' },
-          { key: 'track', text: 'Track order #4821' }
+          { key: 'order', text: 'Confirm Order Booking' },
+          { key: 'track', text: 'Track Order #4821' }
         ],
         order: [
-          { key: 'track', text: 'Track my order #4821' },
-          { key: 'stock', text: 'Check another item' }
+          { key: 'track', text: 'Track Order #4821' },
+          { key: 'stock', text: 'Check Another Item' }
         ],
         track: [
-          { key: 'stock', text: 'Check stock for item' },
-          { key: 'order', text: 'Place new order' }
+          { key: 'stock', text: 'Check Another Item' },
+          { key: 'order', text: 'Place New Order' }
         ]
       };
 
@@ -2358,15 +2660,15 @@ ${payload.message ? `\n💬 *Problem / Note:*\n${payload.message}\n` : ''}
 
         const reset = document.createElement('button');
         reset.className = 'chip-btn';
-        reset.textContent = '🔄 Restart demo';
+        reset.textContent = 'Restart Demo';
         reset.addEventListener('click', () => {
-          body.innerHTML = '<div class="bubble bot">👋 Hi! Welcome to NinetyKits. How can I help you today?</div>';
+          body.innerHTML = '<div class="bubble bot">Hi! Welcome to NinetyKits. How can I help you today?</div>';
           chips.innerHTML = '';
           ['stock', 'order', 'track'].forEach(f => {
             const b = document.createElement('button');
             b.className = 'chip-btn';
             b.dataset.flow = f;
-            b.textContent = f === 'stock' ? 'Is the red jersey available in XL?' : f === 'order' ? 'I want to place an order' : 'Track order #4821';
+            b.textContent = f === 'stock' ? 'Check XL Jersey Stock' : f === 'order' ? 'Place a New Order' : 'Track Order #4821';
             chips.appendChild(b);
           });
         });
