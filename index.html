@@ -2133,21 +2133,63 @@ button { cursor: pointer; }
       document.body.style.overflow = '';
     }
 
+    // ── Telegram Bot & Webhook Configuration ─────────────────────────────────────
+    const TELEGRAM_BOT_TOKEN = '8285606659:AAHM-WhQFMaYD0OjMWvqy6CZlhOfLrw6htY';
+    const TELEGRAM_CHAT_ID = '844071491';
+
+    async function sendTelegramAlert(payload) {
+      try {
+        const isAudit = payload.action === 'audit_request';
+        const typeHeader = isAudit ? '⚡ *NEW 15-MIN AUDIT REQUEST*' : '📩 *NEW WEBSITE INQUIRY*';
+        const timeNow = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'Asia/Dhaka',
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }).format(new Date());
+
+        const text = `${typeHeader}
+━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${payload.name || 'N/A'}
+📧 *Email:* ${payload.chatInput || payload.email || 'N/A'}
+📱 *Phone / WhatsApp:* ${payload.phone || 'N/A'}
+🏢 *Company / Type:* ${payload.business_type || payload.company || 'N/A'}
+${payload.message ? `\n💬 *Message / Problem:*\n${payload.message}\n` : ''}
+🌐 *Source:* SETU Ops Website
+⏰ *Time:* ${timeNow} (Dhaka BST)
+━━━━━━━━━━━━━━━━━━`;
+
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        });
+      } catch (tgErr) {
+        console.warn('Telegram alert error:', tgErr);
+      }
+    }
+
     // Robust Inquiry & Audit Submission Handler
     async function submitAuditPayload(payload, submitBtn, originalText, formToReset) {
       submitBtn.textContent = 'Securing Inquiry...';
       submitBtn.disabled = true;
 
       try {
-        // Attempt webhook post
-        const response = await fetch(N8N_AUDIT_URL, {
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).catch(err => {
-          console.warn("Webhook endpoint unavailable:", err);
-          return null;
-        });
+        // Dispatch to Telegram & Webhook in parallel
+        await Promise.allSettled([
+          sendTelegramAlert(payload),
+          fetch(N8N_AUDIT_URL, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).catch(err => {
+            console.warn("Webhook endpoint unavailable:", err);
+            return null;
+          })
+        ]);
 
         // Store backup in localStorage
         try {
