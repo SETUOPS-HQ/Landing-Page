@@ -2262,15 +2262,19 @@ button { cursor: pointer; }
     <section class="testimonial paper">
       <div class="container grid12 quote-grid">
         <div class="quote-photo">
-          <img src="/tofail-hossain.webp" alt="J.M. Tofail Hossain, Owner NinetyKits Jersey Shop" loading="lazy" decoding="async" width="600" height="600">
+          <img src="/tofail-hossain.webp" alt="J.M. Tofail Hossain, Founder &amp; Owner SA'AH" loading="lazy" decoding="async" width="600" height="600">
         </div>
         <blockquote class="quote display">
           “Before SETU Ops, our team spent 4 hours every morning checking stock and creating courier parcels by hand. Now everything updates automatically in seconds. We saved over 150 hours our first month.”
         </blockquote>
         <div class="quote-author">
-          <strong>J.M. Tofail Hossain</strong>
-          <br>
-          Owner, NinetyKits Jersey Shop
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <img src="/saah-logo.jpg" alt="SA'AH (ساعة) Logo" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 14px rgba(0,0,0,0.2); flex-shrink: 0;">
+            <div>
+              <strong style="font-size: 16px; display: block;">J.M. Tofail Hossain</strong>
+              <span style="font-size: 13px; color: var(--muted); display: block; margin-top: 2px;">Founder &amp; Owner, <b style="color: var(--ink); letter-spacing: 0.05em;">SA'AH</b> (ساعة)</span>
+            </div>
+          </div>
         </div>
         <div class="quote-metrics">
           <div class="metric">
@@ -2337,18 +2341,18 @@ button { cursor: pointer; }
           <div class="chat-window" id="chatSimulator">
             <div class="chat-header">
               <div class="chat-avatar">
-                <img src="/emblem.svg" alt="SETU Bot">
+                <img src="/saah-logo.jpg" alt="SA'AH Assistant Bot">
               </div>
               <div class="chat-header-info">
-                <strong>NinetyKits Bot</strong>
+                <strong>SA'AH Bot</strong>
                 <span>● Online</span>
               </div>
             </div>
             <div class="chat-body" id="chatBody">
-              <div class="chat-bubble bot">👋 Hi! Welcome to NinetyKits. How can I help you today?</div>
+              <div class="chat-bubble bot">👋 Hi! Welcome to SA'AH (ساعة). How can I assist you today?</div>
             </div>
             <div class="chat-suggestions" id="chatSuggestions">
-              <button class="chat-suggest-btn" data-flow="stock">Is the red jersey available in XL?</button>
+              <button class="chat-suggest-btn" data-flow="stock">Is the Royal Chronograph in stock?</button>
               <button class="chat-suggest-btn" data-flow="order">I want to place an order</button>
               <button class="chat-suggest-btn" data-flow="track">Track my order #4821</button>
             </div>
@@ -3087,33 +3091,33 @@ ${payload.message ? `\n💬 *Message / Problem:*\n${payload.message}\n` : ''}
 
       const flows = {
         stock: [
-          { type: 'user', text: 'Is the red jersey available in XL?' },
-          { type: 'bot', text: '🔍 Checking live inventory...', delay: 600 },
-          { type: 'bot', text: '✅ Yes! Red Jersey (XL) is in stock.\n\n📦 3 left in warehouse\n💰 Price: ৳1,250\n🚚 Delivery: 2–3 days (Dhaka)\n\nShall I create your order?', delay: 1200 },
+          { type: 'user', text: 'Is the Royal Chronograph in stock?' },
+          { type: 'bot', text: '🔍 Checking vault inventory...', delay: 600 },
+          { type: 'bot', text: '✅ Yes! SA\'AH Royal Gold Chronograph is in stock.\n\n📦 2 pieces remaining in vault\n💰 Price: ৳4,850\n🚚 Delivery: 2–3 days (Dhaka & Nationwide)\n\nWould you like to reserve your piece?', delay: 1200 },
         ],
         order: [
           { type: 'user', text: 'I want to place an order' },
-          { type: 'bot', text: 'Great! 🎉 Let me set that up.\n\nPlease confirm:\n📱 Name: Rahim Ahmed\n📍 Address: Dhanmondi 27, Dhaka\n👕 Item: Red Jersey (XL) × 1\n💰 Total: ৳1,250 + ৳60 delivery', delay: 1000 },
-          { type: 'bot', text: '📦 Order #4821 confirmed!\n✅ Steadfast courier booked\n🔗 Tracking: SFD-4821-BD\n📲 SMS sent to 01712-XXXXXX\n\nDelivery: 2–3 business days. Thank you! 🙏', delay: 1800 },
+          { type: 'bot', text: 'Wonderful! 🎉 Let me confirm your reservation.\n\n📱 Name: Rahim Ahmed\n📍 Address: Dhanmondi 27, Dhaka\n⌚ Item: Royal Gold Chronograph × 1\n💰 Total: ৳4,850 (Free Express Shipping)', delay: 1000 },
+          { type: 'bot', text: '📦 Order #4821 confirmed!\n✅ Steadfast express courier booked\n🔗 Tracking: SA-4821-BD\n📲 Confirmation SMS sent to your phone.\n\nThank you for choosing SA\'AH. 🙏', delay: 1800 },
         ],
         track: [
           { type: 'user', text: 'Track my order #4821' },
-          { type: 'bot', text: '📡 Fetching tracking info...', delay: 600 },
-          { type: 'bot', text: '📦 Order #4821 Status:\n\n✅ Picked up from warehouse\n✅ In transit — Dhaka Hub\n⏳ Out for delivery (ETA: Today, 4 PM)\n\nCarrier: Steadfast Express\n📞 Rider: 01XXXXXXXXX', delay: 1400 },
+          { type: 'bot', text: '📡 Fetching live dispatch status...', delay: 600 },
+          { type: 'bot', text: '📦 Order #4821 Status:\n\n✅ Dispatched from SA\'AH Vault\n✅ In transit — Dhaka Central Hub\n⏳ Out for delivery (ETA: Today, 4 PM)\n\nCarrier: Steadfast Express\n📞 Rider: 01XXXXXXXXX', delay: 1400 },
         ]
       };
 
       const nextFlows = {
         stock: [
-          { flow: 'order', text: 'Yes, book it!' },
+          { flow: 'order', text: 'Yes, reserve now!' },
           { flow: 'track', text: 'Track my order #4821' }
         ],
         order: [
-          { flow: 'track', text: 'Track my order #4821' },
-          { flow: 'stock', text: 'Check another item' }
+          { flow: 'track', text: 'Track order status' },
+          { flow: 'stock', text: 'Check another timepiece' }
         ],
         track: [
-          { flow: 'stock', text: 'Check stock for an item' },
+          { flow: 'stock', text: 'Check timepiece stock' },
           { flow: 'order', text: 'Place a new order' }
         ]
       };
@@ -3155,13 +3159,13 @@ ${payload.message ? `\n💬 *Message / Problem:*\n${payload.message}\n` : ''}
         reset.className = 'chat-suggest-btn';
         reset.textContent = '🔄 Start over';
         reset.addEventListener('click', () => {
-          body.innerHTML = '<div class="chat-bubble bot">👋 Hi! Welcome to NinetyKits. How can I help you today?</div>';
+          body.innerHTML = '<div class="chat-bubble bot">👋 Hi! Welcome to SA\'AH (ساعة). How can I assist you today?</div>';
           suggestions.innerHTML = '';
           ['stock', 'order', 'track'].forEach(f => {
             const b = document.createElement('button');
             b.className = 'chat-suggest-btn';
             b.dataset.flow = f;
-            b.textContent = f === 'stock' ? 'Is the red jersey available in XL?' : f === 'order' ? 'I want to place an order' : 'Track my order #4821';
+            b.textContent = f === 'stock' ? 'Is the Royal Chronograph in stock?' : f === 'order' ? 'I want to place an order' : 'Track my order #4821';
             suggestions.appendChild(b);
           });
         });
