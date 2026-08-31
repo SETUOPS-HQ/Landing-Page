@@ -1714,6 +1714,36 @@ button { cursor: pointer; }
   display: none !important;
 }
 
+/* Dedicated minimize / close button on top-right of SetuChat iframe */
+.setuchat-close-btn {
+  position: fixed;
+  z-index: 1000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0b1d35;
+  border: 1.5px solid #008ED8;
+  color: #ffffff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 142, 216, 0.4);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.setuchat-close-btn:hover {
+  background: #008ED8;
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(0, 142, 216, 0.6);
+}
+
+.chat-hub.is-chat-open .chat-icon-msg { opacity: 0; transform: scale(0.5) rotate(90deg); }
+.chat-hub.is-chat-open .chat-icon-close { opacity: 1; transform: scale(1) rotate(0deg); }
+.chat-hub.is-chat-open .chat-hub-trigger {
+  background: #0d1e34;
+  border-color: rgba(0, 142, 216, 0.5);
+}
+
 @keyframes pulse-dot {
   0% { transform: scale(0.9); opacity: 0.8; }
   50% { transform: scale(1.2); opacity: 1; }
@@ -3463,22 +3493,98 @@ ${payload.message ? `\n• *Message / Problem:*\n${payload.message}\n` : ''}
       });
     })();
 
-    // ── MULTI-CHANNEL FLOATING CHAT HUB ──
+    // ── MULTI-CHANNEL FLOATING CHAT HUB & SETUCHAT MINIMIZE CONTROLLER ──
     (function() {
       const hub = document.getElementById('chatHub');
       const trigger = document.getElementById('chatHubTrigger');
       const openSetuChatBtn = document.getElementById('openSetuChatBtn');
       if (!hub || !trigger) return;
 
+      // Create floating minimize/close button for SetuChat iframe
+      const closeBtn = document.createElement('button');
+      closeBtn.id = 'setuchat-close-btn';
+      closeBtn.className = 'setuchat-close-btn';
+      closeBtn.setAttribute('aria-label', 'Minimize Chat');
+      closeBtn.setAttribute('title', 'Minimize Chat');
+      closeBtn.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      `;
+      document.body.appendChild(closeBtn);
+
+      function isIframeOpen() {
+        const iframe = document.querySelector('iframe[src*="chat.setuops.xyz"]');
+        return iframe && iframe.style.display !== 'none';
+      }
+
+      function minimizeIframe() {
+        const widgetBtn = document.querySelector('#setuchat-widget-root > button');
+        const iframe = document.querySelector('iframe[src*="chat.setuops.xyz"]');
+        if (isIframeOpen()) {
+          if (widgetBtn) {
+            widgetBtn.click();
+          } else if (iframe) {
+            iframe.style.display = 'none';
+          }
+        }
+        closeBtn.style.display = 'none';
+        hub.classList.remove('is-chat-open');
+      }
+
+      function updateCloseBtnPosition() {
+        const iframe = document.querySelector('iframe[src*="chat.setuops.xyz"]');
+        if (iframe && iframe.style.display !== 'none') {
+          const rect = iframe.getBoundingClientRect();
+          closeBtn.style.top = Math.max(8, rect.top - 12) + 'px';
+          closeBtn.style.left = Math.min(window.innerWidth - 38, rect.right - 20) + 'px';
+          closeBtn.style.display = 'flex';
+          hub.classList.add('is-chat-open');
+        } else {
+          closeBtn.style.display = 'none';
+          hub.classList.remove('is-chat-open');
+        }
+      }
+
+      // Track iframe appearance & positioning
+      setInterval(updateCloseBtnPosition, 200);
+      window.addEventListener('resize', updateCloseBtnPosition);
+
+      // Close button minimizes chat
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimizeIframe();
+      });
+
+      // Main Trigger button click
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
+
+        // If chat iframe is already open, clicking trigger minimizes it
+        if (isIframeOpen()) {
+          minimizeIframe();
+          hub.classList.remove('is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+          return;
+        }
+
         const isActive = hub.classList.toggle('is-active');
         trigger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
       });
 
-      // Close hub on click outside
+      // Close hub on outside click
       document.addEventListener('click', (e) => {
-        if (!hub.contains(e.target)) {
+        if (!hub.contains(e.target) && !closeBtn.contains(e.target)) {
+          hub.classList.remove('is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Escape key minimizes chat and closes menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (isIframeOpen()) minimizeIframe();
           hub.classList.remove('is-active');
           trigger.setAttribute('aria-expanded', 'false');
         }
@@ -3492,11 +3598,13 @@ ${payload.message ? `\n• *Message / Problem:*\n${payload.message}\n` : ''}
           hub.classList.remove('is-active');
           trigger.setAttribute('aria-expanded', 'false');
 
-          // Trigger the injected widget button or poll for it
           const tryOpenWidget = () => {
             const widgetBtn = document.querySelector('#setuchat-widget-root > button');
             if (widgetBtn) {
-              widgetBtn.click();
+              if (!isIframeOpen()) {
+                widgetBtn.click();
+              }
+              setTimeout(updateCloseBtnPosition, 50);
               return true;
             }
             return false;
